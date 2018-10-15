@@ -1,0 +1,9 @@
+# debug and completed files
+completedFile.ftl
+debugTemplate.ftl
+
+# invisible files
+.profile
+
+# node modules
+/node_modules
