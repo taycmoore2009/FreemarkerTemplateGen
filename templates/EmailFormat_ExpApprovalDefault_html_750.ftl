@@ -8,7 +8,7 @@
 
 <#compress>
 
-<#include "templates/EmailFormat_ExpApprovalDefault_functions_910.ftl">
+<#include "templates/EmailFormat_ExpApprovalDefault_functions_750.ftl">
 <html>
     <head>
         <meta name="x-apple-disable-message-reformatting">
@@ -305,16 +305,7 @@
                     <@writeExpensedetails_ name="${replaceWithConstant('Expense Line Items')}" expensedetails_=expense.expensedetailsItems!DUMMY_ARRAY summary=expense.financialsummary!DUMMY_ARRAY listdataComplianceWarnings=expense.complianceWarningItems!DUMMY_ARRAY listdataReceipts=expense.lineItemImagesPageIndexeURLs!DUMMY_ARRAY button=expense.button!DUMMY_ARRAY />
                 </#if>
                 <tr>
-                    <td style="background: rgb(227, 238, 222);">
-                        <table align="center" cellspacing="10" class="actions footer-actions" style="text-align: center; margin: 32px auto; text-align: center;">
-                            <tr>
-                                <td colspan="2" style="font-size: 18px; text-align: center; padding-bottom: 25px;">
-                                    ${addLabelVar(replaceWithConstant("Approve Expense"),  [expense.firstName])}?
-                                </td>
-                            </tr>
-                            <@bottomButtons button=expense.button!DUMMY_ARRAY />
-                        </table>
-                    </td>
+                    <@bottomButtons button=expense.button!DUMMY_ARRAY />
                 </tr>
                 <tr style="text-align: center" align="middle">
                     <td>

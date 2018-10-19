@@ -25,7 +25,7 @@ const generateDebugTemplate = function(file){
  */
 var options = {
     model: JSON.parse(fs.readFileSync('model.json', 'utf8')),
-    file: 'templates/EmailFormat_ExpApprovalDefault_html_910.ftl',
+    file: 'templates/EmailFormat_ExpApprovalDefault_html_750.ftl',
     messages: 'en',
     additionalFileFunctions: [generateDebugTemplate]
 }

@@ -62,7 +62,7 @@
     <table class="desktopHiddenTable" style="display: none; font-size: 0; mso-hide:all;width:0px;overflow:hidden;max-height:0px;height:0;line-height:0;margin:0 auto;padding-top: 0;padding-bottom: 0;">
         <tr>
             <td style="width: 1%; white-space: nowrap;">
-                <img class="mobileLogo" src="https://s33.postimg.cc/cqm38o5zz/EALogo-no_Circle.png" style="width: 35px; vertical-align: middle; padding: 6px 10px 6px 0; margin: 2px 0; border-right: 1px solid #FFF">
+                <img class="mobileLogo" src="https://s3.amazonaws.com/chromeriver-cdn-ext-cx-all/css/img/provider_logos/ea_mobile.png" style="width: 35px; vertical-align: middle; padding: 6px 10px 6px 0; margin: 2px 0; border-right: 1px solid #FFF">
             </td>
             <td>
                 <span class="title" style="font-size: 24px; color: #FFF; font-family: Arial; font-weight: 600;">
@@ -82,7 +82,7 @@
         <tr><td></td></tr>
         <tr align="center">
             <td>
-                <img class="logo" width="34" height="34" src="https://d31x7hvfv30ebb.cloudfront.net/static/images/home-logo-ea.png" style="height: 34px; width: 34px; vertical-align: middle;">
+                <img class="logo" width="34" height="34" src="https://s3.amazonaws.com/chromeriver-cdn-ext-cx-all/css/img/provider_logos/ea_desktop.png" style="height: 34px; width: 34px; vertical-align: middle;">
                 <br class="mobileHidden">
             </td>
         </tr>
@@ -433,22 +433,31 @@
 
 <#macro bottomButtons button>
     <#if button?has_content && button?size=2 >
-    <tr class="btns">
-        <td style="padding: 7px 15px; border: 1px solid rgb(245, 49, 83); border-radius: 3px; background-color: rgb(255, 255, 255); font-weight: 700; color: rgb(245, 49, 83);">
-            <a href='mailto:${button[1]}?subject=${replaceWithConstant("Chrome River Expense Approval")} [${expense.firstName?replace("&","%26")?xhtml} ${expense.lastName?replace("&","%26")?xhtml}]
-                &body=%0D%0A--------------------------------------%0D%0A${getMessageProperty("expense.email.text.approval_accept_response_email_text")?replace("'","%27")?xhtml}%0D%0A--------------------------------------%0D%0A${replaceWithConstant("Report ID")}: ${expense.reportId} ${replaceWithConstant('Email UID')}: ${expense.emailVersionUID!''}'
-                class="btn returnBtn" style="text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase;color: rgb(245, 49, 83);">
-                ${replaceWithConstant("NO, RETURN REPORT")}
-                </a>&nbsp;
+        <td style="background: rgb(227, 238, 222);">
+            <table align="center" cellspacing="10" class="actions footer-actions" style="text-align: center; margin: 32px auto; text-align: center;">
+                <tr>
+                    <td colspan="2" style="font-size: 18px; text-align: center; padding-bottom: 25px;">
+                        ${addLabelVar(replaceWithConstant("Approve Expense"),  [expense.firstName])}?
+                    </td>
+                </tr>
+                <tr class="btns">
+                <td style="padding: 7px 15px; border: 1px solid rgb(245, 49, 83); border-radius: 3px; background-color: rgb(255, 255, 255); font-weight: 700; color: rgb(245, 49, 83);">
+                    <a href='mailto:${button[1]}?subject=${replaceWithConstant("Chrome River Expense Approval")} [${expense.firstName?replace("&","%26")?xhtml} ${expense.lastName?replace("&","%26")?xhtml}]
+                        &body=%0D%0A--------------------------------------%0D%0A${getMessageProperty("expense.email.text.approval_accept_response_email_text")?replace("'","%27")?xhtml}%0D%0A--------------------------------------%0D%0A${replaceWithConstant("Report ID")}: ${expense.reportId} ${replaceWithConstant('Email UID')}: ${expense.emailVersionUID!''}'
+                        class="btn returnBtn" style="text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase;color: rgb(245, 49, 83);">
+                        ${replaceWithConstant("NO, RETURN REPORT")}
+                        </a>&nbsp;
+                </td>
+                <td style="padding: 7px 15px; border: 1px solid rgb(84, 195, 84); border-radius: 3px; background-color: rgb(84, 195, 84); font-weight: 700; color: rgb(255, 255, 255);">
+                    <a href='mailto:${button[0]}?subject=${replaceWithConstant("Chrome River Expense Approval")} [${expense.firstName?replace("&","%26")?xhtml} ${expense.lastName?replace("&","%26")?xhtml}]
+                        &body=%0D%0A--------------------------------------%0D%0A${getMessageProperty("expense.email.text.approval_accept_response_email_text")?replace("'","%27")?xhtml}%0D%0A--------------------------------------%0D%0A${replaceWithConstant("Report ID")}: ${expense.reportId} ${replaceWithConstant('Email UID')}: ${expense.emailVersionUID!''}' 
+                        class="btn approveBtn" style="text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase; color: rgb(255, 255, 255);">
+                        ${replaceWithConstant("YES, APPROVE REPORT")}
+                    </a>
+                </td>
+            </tr>
+            </table>
         </td>
-        <td style="padding: 7px 15px; border: 1px solid rgb(84, 195, 84); border-radius: 3px; background-color: rgb(84, 195, 84); font-weight: 700; color: rgb(255, 255, 255);">
-            <a href='mailto:${button[0]}?subject=${replaceWithConstant("Chrome River Expense Approval")} [${expense.firstName?replace("&","%26")?xhtml} ${expense.lastName?replace("&","%26")?xhtml}]
-                &body=%0D%0A--------------------------------------%0D%0A${getMessageProperty("expense.email.text.approval_accept_response_email_text")?replace("'","%27")?xhtml}%0D%0A--------------------------------------%0D%0A${replaceWithConstant("Report ID")}: ${expense.reportId} ${replaceWithConstant('Email UID')}: ${expense.emailVersionUID!''}' 
-                class="btn approveBtn" style="text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase; color: rgb(255, 255, 255);">
-                ${replaceWithConstant("YES, APPROVE REPORT")}
-            </a>
-        </td>
-    </tr>
     </#if>
 </#macro>
 
