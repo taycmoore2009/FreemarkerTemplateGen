@@ -409,7 +409,7 @@
                                     <tr>
                                         <td style="text-align: center; padding: 7px; width: 180px; border: 1px solid rgb(245, 49, 83); border-radius: 3px; background-color: rgb(255, 255, 255); font-weight: 700; color: rgb(245, 49, 83);">
                                             <a href='mailto:${button[1]}?subject=${replaceWithConstant("Chrome River Expense Approval")} [${expense.firstName?replace("&","%26")?xhtml} ${expense.lastName?replace("&","%26")?xhtml}]
-							                    &body=%0D%0A--------------------------------------%0D%0A${getMessageProperty("expense.email.text.approval_accept_response_email_text")?replace("'","%27")?xhtml}%0D%0A--------------------------------------%0D%0A${replaceWithConstant("Report ID")}: ${expense.reportId} ${replaceWithConstant('Email UID')}: ${expense.emailVersionUID!''}'
+							                    &body=%0D%0A--------------------------------------%0D%0A${getMessageProperty("expense.email.text.approval_return_response_email_text")?replace("'","%27")?xhtml}%0D%0A--------------------------------------%0D%0A${replaceWithConstant("Report ID")}: ${expense.reportId} ${replaceWithConstant('Email UID')}: ${expense.emailVersionUID!''}'
                                                 class="btn returnBtn" style="text-decoration: none; font-size: 16px; font-weight: 700; text-transform: uppercase; color: rgb(245, 49, 83);">
                                                 ${replaceWithConstant("RETURN REPORT")}
                                             </a>&nbsp;
