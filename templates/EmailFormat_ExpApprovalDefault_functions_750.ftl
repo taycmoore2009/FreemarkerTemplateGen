@@ -12,6 +12,10 @@
 	</#if>
 </#function>
 
+<#function checkLabel var prefix>
+    <#return commonPrefix+prefix+var?trim?lower_case?replace('[^a-zA-Z\\d\\s-_]', '', 'r')?replace(' +','_','r')>
+</#function>
+
 <#function replaceWithConstant var>
 	<#return removeSpecialCharactersAndFormKey(var, keyPrefix)>
 </#function>
@@ -270,9 +274,9 @@
                                         </#if>
                                         <tr class="${trClasses}" style="${trStyles}">
                                             <#if receiptLink != "#">
-                                                <@columnData data='<a href="${receiptLink}">${replaceWithConstantForItemType(replaceWithConstant(hasChild?then(args[2]!BLANK, args[1]!BLANK)))}</a>'/>
+                                                <@columnData data='<a href="${receiptLink}">${replaceWithConstantForItemType(hasChild?then(args[2]!BLANK, args[1]!BLANK))}</a>'/>
                                             <#else>
-                                                <@columnData data='<span>${replaceWithConstantForItemType(replaceWithConstant(hasChild?then(args[2]!BLANK, args[1]!BLANK)))}</span>'/>
+                                                <@columnData data='<span>${replaceWithConstantForItemType(hasChild?then(args[2]!BLANK, args[1]!BLANK))}</span>'/>
                                             </#if>
                                             <#list block as extras>
                                                 <#if extras[0]?lower_case?matches('child')>
@@ -294,12 +298,12 @@
                                             <#list block as extras>
                                                 <#if extras[0]?lower_case?matches('child')>
                                                     <#if extras?size == 3 && extras[1]?lower_case?matches("description")>
-                                                        <@columnData data="${replaceWithConstant(extras[2])!BLANK}" tdclass="mobileMaxColumn"/>
+                                                        <@columnData data="${extras[2]!BLANK}" tdclass="mobileMaxColumn"/>
                                                         <#local hasDesc=true>
                                                     </#if>
                                                 <#else>
                                                     <#if extras?size == 2 && extras[0]?lower_case?matches("description")>
-                                                        <@columnData data="${replaceWithConstant(extras[1])!BLANK}" tdclass="mobileMaxColumn"/>
+                                                        <@columnData data="${extras[1]!BLANK}" tdclass="mobileMaxColumn"/>
                                                         <#local hasDesc=true>
                                                     </#if>
                                                 </#if>
@@ -443,7 +447,7 @@
                 <tr class="btns">
                 <td style="padding: 7px 15px; border: 1px solid rgb(245, 49, 83); border-radius: 3px; background-color: rgb(255, 255, 255); font-weight: 700; color: rgb(245, 49, 83);">
                     <a href='mailto:${button[1]}?subject=${replaceWithConstant("Chrome River Expense Approval")} [${expense.firstName?replace("&","%26")?xhtml} ${expense.lastName?replace("&","%26")?xhtml}]
-                        &body=%0D%0A--------------------------------------%0D%0A${getMessageProperty("expense.email.text.approval_accept_response_email_text")?replace("'","%27")?xhtml}%0D%0A--------------------------------------%0D%0A${replaceWithConstant("Report ID")}: ${expense.reportId} ${replaceWithConstant('Email UID')}: ${expense.emailVersionUID!''}'
+                        &body=%0D%0A--------------------------------------%0D%0A${getMessageProperty("expense.email.text.approval_return_response_email_text")?replace("'","%27")?xhtml}%0D%0A--------------------------------------%0D%0A${replaceWithConstant("Report ID")}: ${expense.reportId} ${replaceWithConstant('Email UID')}: ${expense.emailVersionUID!''}'
                         class="btn returnBtn" style="text-decoration: none; font-size: 18px; font-weight: 700; text-transform: uppercase;color: rgb(245, 49, 83);">
                         ${replaceWithConstant("NO, RETURN REPORT")}
                         </a>&nbsp;
