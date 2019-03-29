@@ -35,9 +35,9 @@
             <tbody>
                 <tr>
                 </tr>
-                <tr width='680'>
+                <tr width='680' align="center">
                     <td>
-                        <table>
+                        <table width='100%'>
                             <tbody>
                                 <tr>
                                     <td>ChromeRiver</td>
