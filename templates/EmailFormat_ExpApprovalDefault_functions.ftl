@@ -56,6 +56,622 @@
 	<#return ((percent*width)/100)?round?string >
 </#function>
 
+<#macro tables title="" rightHeader="" rows="" footer="">
+	<table style='width: 100%; border-collapse: collapse;'>
+		<tbody>
+			<tr>
+				<#if rightHeader?has_content>
+					<td style='font-weight: 600; padding-bottom: 7px;'>
+						${title}
+					</td>
+					<td style='text-align: right; padding-bottom: 7px;'>
+						Amount (${rightHeader})
+					</td>
+				<#else>
+					<td colspan='${rows?first?size}' style='font-weight: 600; padding-bottom: 7px;'>
+						${title}
+					</td>
+				</#if>
+			</tr>
+			<#if rows?has_content>
+				<#list rows as row>
+					<tr>
+						<#list row?values as value>
+							<#if value?counter == row?size>
+								<td style='text-align: right; padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							<#else>
+								<td style='padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							</#if>
+								<#if value?is_string>
+									${value}
+								<#else>
+									<#if value?is_hash>
+										<#list value?values as subValue>
+											${subValue}<#if subValue?counter != value?size><br/></#if>
+										</#list>
+									<#else>
+										<#list value as subValue>
+											${subValue}<#if subValue?counter != value?size><br/></#if>
+										</#list>
+									</#if>
+								</#if>
+							</td>
+						</#list>
+					</tr>
+				</#list>
+			</#if>
+			<#if footer?has_content>
+				<#list footer as row>
+					<tr>
+						<#list row?values as value>
+							<td style='text-align: right; padding: 7px 0; font-weight: 600; border-top: 1px solid #e7e9ea; '>
+								${value}
+							</td>
+						</#list>
+					</tr>
+				</#list>
+			</#if>
+		</tbody>
+	</table>
+</#macro>
+
+<#macro commentTable rows >
+	<table style='width: 100%; border-collapse: collapse;'>
+		<tbody>
+			<tr>
+				<td colspan='2' style='font-weight: 600; padding-bottom: 7px;'>
+					Comments
+				</td>
+			</tr>
+			<#if rows?has_content>
+				<#list rows as row>
+					<tr>
+						<td style='padding: 7px 0 0; border-top: 1px solid #e7e9ea;' class='mobile_td_full-width'>
+							${row.user}
+						</td>
+						<td style='text-align: right; padding: 7px 0 0; border-top: 1px solid #e7e9ea;' class='mobile_td_full-width mobile_remove-border'>
+							${row.date}
+						</td>
+					</tr>
+					<tr>
+						<td style='padding: 0 0 7px; border-bottom: 1px solid #e7e9ea;' class='mobile_td_full-width'>
+							<#list row.comments as comment>
+								${comment}<br/>
+							</#list>
+						</td>
+					</tr>
+				</#list>
+			</#if>
+		</tbody>
+	</table>
+</#macro>
+
+<#macro accountSummaryTable title rows currency totals>
+	<table style='width: 100%; border-collapse: collapse;'>
+		<tbody>
+			<tr>
+				<td colspan='3' style='font-weight: 600; padding-bottom: 7px;'>
+					${title}
+				</td>
+				<td style='text-align: right; padding-bottom: 7px;'>
+					Amount (${currency})
+				</td>
+			</tr>
+			<#if rows?has_content>
+				<#list rows as row>
+					<tr style='ont-size: 13px;'>
+						<td valign="top" style='padding: 7px 10px 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							${row.MOSID}
+						</td>
+						<#if row.MOSChildren?has_content>
+							<td valign="top" colspan='2' style='padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+								<#list row.MOSChildren as children>
+									<div>${children.MOSChild}</div>
+									<div style='color: #9fa4a6; padding: 2px 0px 7px;'>${children.Description}</div>
+								</#list>
+							</td>
+						<#else>
+							<td valign="top" style='padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+								${row.Name}<br/>
+								<span style='display: none; color: #9fa4a6;' class="mobile_span-show">
+									${row.Description}
+								</span>
+							</td>
+							<td valign="top" style='color: #9fa4a6; padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+								<span class='mobile_hidden'>${row.Description}</span>
+							</td>
+						</#if>
+						<td valign="top" style='text-align: right; padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							${row.amount}
+						</td>
+					</tr>
+				</#list>
+			</#if>
+			<tr>
+				<td colspan='3' style='text-align: right; padding: 7px 0; font-weight: 600;'>
+					Subtotal
+				</td>
+				<td style='text-align: right; padding: 7px 0; font-weight: 600;'>
+					${totals.Subtotal}
+				</td>
+			</tr>
+			<tr>
+				<td colspan='3' style='text-align: right; padding: 7px 0; font-weight: 600;'>
+					Total
+				</td>
+				<td style='text-align: right; padding: 7px 0; font-weight: 500; font-size: 20px;'>
+					${totals.Total}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</#macro>
+
+<#macro expenseSummaryTable title rows currency totals>
+	<table style='width: 100%; border-collapse: collapse;'>
+		<tbody>
+			<tr>
+				<td colspan='2' style='font-weight: 600; padding-bottom: 7px;'>
+					${title}
+				</td>
+				<td style='text-align: right; padding-bottom: 7px;'>
+					Amount (${currency})
+				</td>
+			</tr>
+			<#if rows?has_content>
+				<#list rows as row>
+					<tr>
+						<#list row?values as value>
+							<#if value?counter == row?size>
+								<td colspan='2' style='text-align: right; padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							<#else>
+								<td style='padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							</#if>
+								${value}
+							</td>
+						</#list>
+					</tr>
+				</#list>
+			</#if>
+			<tr>
+				<td style='padding: 15px 0px 7px; font-weight: 500;'> 
+					<a href='a5' style='color: #31b4cb; padding: 0px 0px 12px;'>View all Receipts</a>
+				</td>
+				<td style='text-align: right; padding: 15px 0px 7px; font-weight: 600;'>
+					Subtotal
+				</td>
+				<td style='text-align: right; padding: 15px 0px 7px; font-weight: 600;'>
+					${totals.subtotal}
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2' style='text-align: right; padding: 7px 0; font-weight: 600;'>
+					Total
+				</td>
+				<td style='text-align: right; padding: 7px 0; font-weight: 500; font-size: 20px;'>
+					${totals.total}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</#macro>
+
+<#macro guestDetailsTable rows>
+	<table style='width: 100%; border-collapse: collapse;'>
+		<tbody>
+			<tr>
+				<td colspan='2' style='font-weight: 600; padding-bottom: 7px;'>
+					Guest Details
+				</td>
+			</tr>
+			<#if rows?has_content>
+				<#list rows as row>
+					<tr>
+						<td style='padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							${row.Name}<br/>
+							<span style='display: none; color: #9fa4a6;' class="mobile_span-show">
+								${row.Description}
+							</span>
+						</td>
+						<td style='padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							<span class='mobile_hidden'>${row.Description}</span>
+						</td>
+						<td style='text-align: right; padding: 7px 0; border-top: 1px solid #e7e9ea; border-bottom: 1px solid #e7e9ea;'>
+							${row.Company}<br/>
+						</td>
+					</tr>
+				</#list>
+			</#if>
+		</tbody>
+	</table>
+</#macro>
+
+<#macro buttonsTable>
+	<table class='btnTable' width='100%' style='width: 100%; border-collapse: collapse;'>
+		<tbody>
+			<tr>
+				<td class='btnTable_td btnTable_view' style='padding: 20px 5px;'>
+					<table><tbody><tr>
+						<td style='border: none; background: #31b4cb; font-size: 14px; text-align: center; padding: 12px 20px; border-radius: 2px; font-weight: 500;'>
+							<a href='#a2' style='color: #FFFFFF; text-decoration: none;'>View Full Report</a>
+						</td>
+					</tr></tbody></table>
+				</td>
+				<td class='btnTable_td btnTable_return' width='92px' style='padding: 20px 5px; text-align: right;'>
+					<table><tbody><tr>
+						<td style='border: none; background: #cf261a; font-size: 14px; text-align: center; padding: 12px 20px; border-radius: 2px; font-weight: 500;'>
+							<a href='#a3' style='color: #FFFFFF; text-decoration: none;'>Return</a>
+						</td>
+					</tr></tbody></table>
+				</td>
+				<td class='btnTable_td btnTable_approve' width='102px' style='padding: 20px 5px; text-align: right;'>
+					<table><tbody><tr>
+						<td style='border: none; background: #86b53b; font-size: 14px; text-align: center; padding: 12px 20px; border-radius: 2px; font-weight: 500;'>
+							<a href='#a2' style='color: #FFFFFF; text-decoration: none;'>Approve</a>
+						</td>
+					</tr></tbody></table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</#macro>
+
+<#macro expenseDetailsTable expenseDetails currency recieptURL>
+	<table style='width: 100%; border-collapse: collapse;'>
+		<tbody valign='top'>
+			<tr>
+				<td colspan='3' style='font-weight: 600; padding-bottom: 7px;'>
+					Expense Details
+				</td>
+				<td colspan='2' style='text-align: right; padding-bottom: 7px;'>
+					Amount (${currency})
+				</td>
+			</tr>
+			<#list expenseDetails.lineItems as row>
+				<@expenseDetailsTableRow row=row isChild=false />
+			</#list>
+			<tr><td colspan='5' style='padding: 10px;'></td></tr>
+			<tr>
+				<td colspan='2' style='border-top: 1px solid #e7e9ea; padding-top: 10px;'>
+					<a href='${recieptURL}' style='color: #31b4cb;'>View all Receipts</a>
+				</td>
+				<td colspan='2' style='text-align: right; font-weight: 600; border-top: 1px solid #e7e9ea; padding-top: 10px;'>Subtotal</td>
+				<td style='text-align: right; font-weight: 600; border-top: 1px solid #e7e9ea; padding-top: 10px;'>${expenseDetails.subtotal}</td>
+			</tr>
+			<tr>
+				<td colspan='4' style='text-align: right; font-weight: 600; padding-top: 10px;'>Total</td>
+				<td style='text-align: right; font-weight: 500; font-size: 20px; padding-top: 10px;'>${expenseDetails.total}</td>
+			</tr>
+		</tbody>
+	</table>
+</#macro>
+
+<#macro expenseDetailsTableRow row isChild>
+	<tr>
+		<#if isChild>
+		<td width='25%' style='padding: 7px 10px 0 10px; border-top: 10px solid #FFF; border-left: 8px solid #f5f8fa'>
+		<#else>
+		<td width='25%' style='padding: 7px 10px 0px 0; border-top: 1px solid #e7e9ea;'>
+		</#if>
+			<span style='font-weight: 600;'>${row.icon}</span><br/>
+			<span style='font-weight: 500; font-size: 10px;'>${row.date}</span><br/>
+			<a href='${row.recieptUrl}' style='font-size: 10px; color: #31b4cb;'>Reciept</a>
+		</td>
+		<#if isChild>
+		<td colspan='3' style='padding: 7px 10px 0 0px; border-top: 10px solid #FFF;'>
+		<#else>
+		<td colspan='3' style='padding: 7px 10px 0px 0; border-top: 1px solid #e7e9ea;'>
+		</#if>
+			<span>${row.title}</span>
+			<span style='font-size: 11px; line-height: 11px;'>
+			<#if row.businessPurpose?has_content>
+				<br/>${row.businessPurpose}
+			</#if>
+			<#if row.businessDescription?has_content>
+				<br/>${row.businessDescription}
+			</#if>
+			</span>
+		</td>
+		<#if isChild>
+		<td style='padding: 7px 0px 0 0; text-align: right; font-weight: 600; border-top: 10px solid #FFF;'>
+		<#else>
+		<td style='padding: 7px 0px 0px 0; border-top: 1px solid #e7e9ea; text-align: right; font-weight: 600;'>
+		</#if>
+			${row.amount}<br/>
+			<#if row.originalAmount?has_content>
+				<span style='font-weight: 400; font-size: 10px;'>(${row.originalAmount} ${row.originalCurrency})</span>
+			</#if>
+		</td>
+	<#if row.details?has_content>
+	<tr>
+		<#if isChild>
+		<td style='border-left: 8px solid #f5f8fa'></td>
+		<#else>
+		<td><span style='display: none; padding: 5px 8px 5px 0; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;' class='mobile_span-show'>Details</span></td>
+		</#if>
+		<td width='82px' style='padding: 5px 8px 5px 0; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>
+			<span class='mobile_hidden'>Details</span>
+		</td>
+		<td colspan='3' style='padding: 5px 0; font-size: 12px; font-weight: 500;'>
+			${row.details}
+		</td>
+	</tr>
+	</#if>
+	<#if row.guests?has_content>
+	<tr>
+		<#if isChild>
+		<td style='border-left: 8px solid #f5f8fa'></td>
+		<#else>
+		<td></td>
+		</#if>
+		<td width='82px' style='padding: 5px 8px 5px 0; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>People</td>
+		<td colspan='3' style='padding: 5px 0; font-size: 12px; font-weight: 500;'>${row.guests?size}</td>
+	</tr>
+	<#list row.guests as guest>
+		<tr>
+			<#if isChild>
+			<td style='border-left: 8px solid #f5f8fa'></td>
+			<#else>
+			<td></td>
+			</#if>
+			<td width='82px' style='padding: 5px 8px 5px 0; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>Guest ${guest?counter}</td>
+			<td colspan='2' style='padding: 5px 0; font-size: 12px; font-weight: 500;'>${guest.name} ${guest.company}</td>
+			<td style='padding: 5px 0; font-size: 12px; font-weight: 500; text-align: right;'>${guest.amount}</td>
+		</tr>
+		<#if guest?counter==10>
+			<tr>
+				<#if isChild>
+				<td style='border-left: 8px solid #f5f8fa'></td>
+				<#else>
+				<td></td>
+				</#if>
+				<td></td>
+				<td colspan='4' style='padding: 0px 0px 5px;'>
+					<a href='a0' style='font-size: 10px; color: #31b4cb'>View full reports for all guests</a>
+				</td>
+			</tr>
+			<#break>
+		</#if>
+	</#list>
+	</#if>
+	<#if row.perDiem?has_content>
+	<#list row.perDiem as perDiem>
+		<tr>
+			<#if isChild>
+			<td style='border-left: 8px solid #f5f8fa'></td>
+			<#else>
+			<td></td>
+			</#if>
+			<#if perDiem?counter == 1>
+				<td width='82px' style='padding: 5px 8px 0px 0px; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>Per Diem</td>
+				<td colspan='2' style='padding: 5px 0px 0px; font-size: 12px; font-weight: 500;'>
+					${perDiem.name}
+				</td>
+				<#if perDiem.personal>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500; color: #cf261a;'>
+				<#else>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500;'>
+				</#if>
+					${perDiem.amount}
+				</td>
+			<#else>
+				<td></td>
+				<td colspan='2' style='font-size: 12px; font-weight: 500;'>
+					${perDiem.name}
+				</td>
+				<#if perDiem.personal>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500; color: #cf261a;'>
+				<#else>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500;'>
+				</#if>
+					${perDiem.amount}
+				</td>
+			</#if>
+		</tr>
+	</#list>
+	</#if>
+	<#if row.personalItems?has_content>
+	<#list row.personalItems as personalItem>
+		<tr>
+			<#if isChild>
+			<td style='border-left: 8px solid #f5f8fa'></td>
+			<#else>
+			<td></td>
+			</#if>
+			<#if personalItem?counter == 1>
+				<td width='82px' style='padding: 5px 8px 0px 0px; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>Personal Item</td>
+				<td colspan='2' style='padding: 5px 0px 0px; font-size: 12px; font-weight: 500;'>
+					${personalItem.name}
+				</td>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500; color: #cf261a;'>
+					${personalItem.amount}
+				</td>
+			<#else>
+				<td></td>
+				<td colspan='2' style='font-size: 12px; font-weight: 500;'>
+					${personalItem.name}
+				</td>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500; color: #cf261a;'>
+					${personalItem.amount}
+				</td>
+			</#if>
+		</tr>
+	</#list>
+	</#if>
+	<#if row.firmPaidItems?has_content>
+	<#list row.firmPaidItems as firmPaidItem>
+		<tr>
+			<#if isChild>
+			<td style='border-left: 8px solid #f5f8fa'></td>
+			<#else>
+			<td></td>
+			</#if>
+			<#if firmPaidItem?counter == 1>
+				<td width='82px' style='padding: 5px 8px 0px 0px; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>Firm Paid Item</td>
+				<td colspan='2' style='padding: 5px 0px 0px; font-size: 12px; font-weight: 500;'>
+					${firmPaidItem.name}
+				</td>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500;'>
+					${firmPaidItem.amount}
+				</td>
+			<#else>
+				<td></td>
+				<td colspan='2' style='font-size: 12px; font-weight: 500;'>
+					${firmPaidItem.name}
+				</td>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500;'>
+					${firmPaidItem.amount}
+				</td>
+			</#if>
+		</tr>
+	</#list>
+	</#if>
+	<#if row.extras?has_content>
+		<#list row.extras as extraData>
+			<tr>
+				<#if isChild>
+				<td style='border-left: 8px solid #f5f8fa'></td>
+				<#else>
+				<td></td>
+				</#if>
+				<td width='82px' style='padding: 5px 8px 5px 0; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>
+					${extraData.label}
+				</td>
+				<td colspan='2' style='padding: 5px 0; font-size: 12px; font-weight: 500;'>
+					${extraData.value}
+				</td>
+				<td style='padding: 5px 0; font-size: 12px; font-weight: 500; text-align: right;'>
+					${extraData.amount}
+				</td>
+			</tr>
+		</#list>
+	</#if>
+	<#if row.misc?has_content>
+	<tr>
+		<#if isChild>
+		<td style='border-left: 8px solid #f5f8fa'></td>
+		<#else>
+		<td></td>
+		</#if>
+		<td width='82px' style='padding: 5px 8px 5px 0; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>Misc</td>
+		<td colspan='3' style='padding: 5px 0; font-size: 12px; font-weight: 500;'>
+			${row.misc}
+		</td>
+	</tr>
+	</#if>
+	<#if row.allocations?has_content>
+		<#list row.allocations as allocation>
+		<tr>
+			<#if isChild>
+			<td style='border-left: 8px solid #f5f8fa'></td>
+			<#else>
+			<td></td>
+			</#if>
+			<#if allocation?counter == 1>
+				<td width='82px' style='padding: 5px 8px 0px 0px; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>allocations</td>
+				<td style='padding: 5px 0px 0px; font-size: 12px; font-weight: 500;'>
+					${allocation.name}
+				</td>
+				<td style='padding: 5px 0px 0px; font-size: 12px; font-weight: 500;'>
+					<#list allocation.onSelect as onSelect>
+						${onSelect.id} ${onSelect.name}<br/>
+					</#list>
+				</td>
+				<td style='padding: 5px 0px 0px; text-align: right; font-size: 12px; font-weight: 500;'>
+					${allocation.amount}
+				</td>
+			<#else>
+				<td></td>
+				<td style='font-size: 12px; font-weight: 500;'>
+					${allocation.name}
+				</td>
+				<td style='font-size: 12px; font-weight: 500;'>
+					<#list allocation.onSelect as onSelect>
+						${onSelect.id} ${onSelect.name}<br/>
+					</#list>
+				</td>
+				<td style='padding: 5px 0; text-align: right; font-size: 12px; font-weight: 500;'>
+					${allocation.amount}
+				</td>
+			</#if>
+		</tr>
+		<#if allocation.onSelect?has_content>
+			<#list allocation.onSelect as onSelect>
+				<#if onSelect.breakdown?has_content>
+					<#list onSelect.breakdown as breakdown>
+						<tr>
+							<#if isChild>
+							<td style='border-left: 8px solid #f5f8fa'></td>
+							<#else>
+							<td></td>
+							</#if>
+							<td></td>
+							<td style='color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>
+								${breakdown.label}
+							</td>
+							<td style='text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>
+								${breakdown.value}
+							</td>
+							<td style='text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px; text-align: right;'>
+								${breakdown.amount}
+							</td>
+						</tr>
+					</#list>
+				</#if>
+			</#list>
+		</#if>
+		</#list>
+	</#if>
+	<#if row.comments?has_content>
+		<#list row.comments as comment>
+		<tr>
+			<#if isChild>
+			<td style='border-left: 8px solid #f5f8fa'></td>
+			<#else>
+			<td></td>
+			</#if>
+			<td width='82px' style='padding: 5px 8px 0px 0px; color: #9fa4a6; text-transform: uppercase; font-size: 11px; font-weight: 500; line-height: 14px;'>Comments</td>
+			<td colspan='2' style='padding: 5px 0 0; font-size: 12px; font-weight: 500;'>${comment.user}</td>
+			<td style='padding: 5px 0 0; font-size: 12px; font-weight: 500; text-align: right;'>${comment.date}</td>
+		</tr>
+		<tr>
+			<#if isChild>
+			<td colspan='2' style='border-left: 8px solid #f5f8fa'></td>
+			<#else>
+			<td colspan='2'></td>
+			</#if>
+			<td colspan='3' style='font-size: 12px; font-weight: 500;'>${comment.comment}</td>
+		</tr>
+		</#list>
+	</#if>
+	<#if row.compliance?has_content>
+		<#list row.compliance as complianceWarning>
+			<tr>
+				<td colspan='5' style='padding: 10px;' >
+					<table style='background: #fceedb; width: 100%; border-radius: 5px; padding: 5px 10px; font-size: 11px; font-weight: 400;'>
+						<tbody>
+							<tr>
+								<td colspan='2' style='color: #f0ad4e; font-weight: 600; padding: 0px 0px 5px; font-size: 12px;'>
+									>> ${complianceWarning.warningCode}: ${complianceWarning.warningTitle}
+								</td>
+							</tr>
+							<tr>
+								<td width='82px' style='text-transform: uppercase; color: #9fa4a6; padding: 0px 10px 0px 0px;'>Response</td>
+								<td style='color: #475156;'>${complianceWarning.response}
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</#list>
+	</#if>
+	<#if row.children?has_content>
+		<#list row.children as child>
+			<@expenseDetailsTableRow row=child isChild=true />
+		</#list>
+	</#if>
+</#macro>
+
 <#macro columnData tdstyle="" divstyle="" valign="top" data="${HTML_SPACE}" width="${BLANK}">
 	<#if (width?length>0)>
 		<td valign="${valign}" style="${tdstyle}" width="${width}">
