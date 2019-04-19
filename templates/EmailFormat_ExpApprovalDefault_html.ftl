@@ -20,7 +20,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<meta name="description" content="About Us Chrome River was formed with the simple but powerful idea that a new approach could be taken for expense and invoice process automation. Using new technologies, we decided that the users view should drive the design and then simply allow the power of the platform to automate and control the process for the business. Wide adoption with limited training was becoming the new mantra of the internet and there was no reason that this should not apply to business applications as well. To deliver on this vision, the Chrome River team has brought together an ideal combination of experience, innovation and customer care which enables us to design, build, implement and support highly effective solutions for financial workflow automation processes. Our Experience	Collectively, Chrome River has over 100 years of experience serving the financial and practice management needs of organizations worldwide. With respect to expense control and efficient processing, we have a deep understanding of an organizations financial operations, processes and goals. Our solutions and services are designed from the ground up to uniquely offer the flexibility to fit our customers requirements. Our Customer Care Delivering the highest standard of customer care is a key component of our business at Chrome River, after all, we do provide software as a service.  Beginning with our consultative, best practices guidance, then delivering a full-featured turn-key solution, and ultimately supporting your companys team with quality care, Chrome Rivers experienced staff is there to guide and assist you every step of the way." />
-	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="x-apple-disable-message-reformatting">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content="telephone=no" name="format-detection">
     <style type='text/css'>
         @media only screen and (max-width:480px),
             only screen and (resolution: 4dppx) and (max-width: 1440px) {
@@ -42,9 +44,11 @@
                 .mobile_hidden {
                     display: none;
                 }
+                .mobile_tr-show {
+                    display: table-row !important;
+                }
                 .mobile_td-hidden {
                     width: 0 !important;
-
                 }
                 .mobile_span-show {
                     display: inline !important;;
@@ -66,10 +70,17 @@
                 .btnTable_approve {
                     width: 50%;
                 }
+                .accountSummaryTable {
+                    font-size: 12px;
+                    font-weight: 500;
+                }
+                .font-size-10 {
+                    font-size: 10 !important;
+                }
         }
 	</style>
 	
-	<body style="background:#475156; color: #475156; font-family: 'Arial'; font-family: 'Open Sans', 'OpenSans', 'opensans', 'Sans Serif', 'SansSerif', sans-serif, 'Arial';">
+	<body style="background:#475156; color: #475156; font-family: 'Helvetica'; font-family: 'Helvetica', 'Sans Serif', 'SansSerif', sans-serif, 'Arial';">
 		<table width='100%'>
             <tbody>
                 <tr>
@@ -121,40 +132,13 @@
                                                         <span style='color: #9fa4a6;'>Submitted on 02/10/2019</span>
                                                     </td>
                                                 <!-- Warning stuff -->
+                                                <#list expense.headerWarnings as warning>
                                                 <tr>
                                                     <td colspan='2' style='padding: 5px 0px;'>
-                                                        <table width='100%' style='background: #fceedb; width: 100%; border-radius: 5px; padding: 5px 10px; font-size: 11px; font-weight: 400;'>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td colspan='2' style='color: #f0ad4e; font-weight: 600; padding: 0px 0px 5px; font-size: 12px;'>
-                                                                        >> 301: Submit Compliance
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width='82px' style='text-transform: uppercase; color: #9fa4a6; padding: 0px 10px 0px 0px'>Response</td>
-                                                                    <td style='color: #475156;'>Busy season charged. Planned last minute.</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                        <@complianceTable warningCode=warning.code warningTitle=warning.title response=warning.response />
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td colspan='2' style='padding: 5px 0px;'>
-                                                        <table width='100%' style='background: #fceedb; width: 100%; border-radius: 5px; padding: 5px 10px; font-size: 11px; font-weight: 400;'>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td colspan='2' style='color: #f0ad4e; font-weight: 600; padding: 0px 0px 5px; font-size: 12px;'>
-                                                                        >> 301: Submit Compliance
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width='82px' style='text-transform: uppercase; color: #9fa4a6; padding: 0px 10px 0px 0px'>Response</td>
-                                                                    <td style='color: #475156;'>Busy season charged. Planned last minute.</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
+                                                </#list>
                                                 <!-- Approval Info -->
                                                 <tr>
                                                     <td colspan='2' style='padding: 20px 0;'>
