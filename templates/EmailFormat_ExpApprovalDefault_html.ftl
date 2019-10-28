@@ -24,8 +24,8 @@
 	<style type='text/css'>#maintable {width:600px;}@media screen and (max-width: 660px){#maintable{width:100%; max-width:600px;}<!--.tdcolumn{width: 149px;}--><!--#tdcol{width: 149px;}-->
 	</style>
 	
-	<body style="background:#EBEEF0;">
-		<table cellpadding="0" cellspacing="0" width="100%" style="background:#EBEEF0;">
+	<body style="background:#475156;">
+		<table cellpadding="0" cellspacing="0" width="100%" style="background:#475156;">
 			<tr>
 				<td>
 					<#-- Report and Footer Wrapper -->
@@ -33,7 +33,7 @@
 						<tr>
 							<td>
 								<#-- Header with report id -->
-								<table cellpadding="0" cellspacing="0" width="100%" style="background:#EBEEF0; font-size:9pt; font-weight:normal; color:#404040;">
+								<table cellpadding="0" cellspacing="0" width="100%" style="margin-top: 50px; padding: 8px 0; background:#475156; font-size:9pt; font-weight:normal; color:#9FA4AC;">
 									<tr>
 										<td height="15" width="100%">
 											<span> ${HTML_SPACE} </span>
@@ -48,7 +48,7 @@
 								</table>
 								<#-- End Header with report id -->
 								<#-- Report Container with Border -->
-								<table cellpadding="0" cellspacing="0" align="center" width="100%" style="background:#FFFFFF; border-collapse: collapse; border: 2pt solid #B4C1C6;">
+								<table cellpadding="0" cellspacing="0" align="center" width="100%" style="background:#FFFFFF; border-collapse: collapse; border-width: 0px;  border-radius: 5px 5px 0 0;">
 									<@writeHeader value=expense.header!DUMMY_ARRAY />
 									<#assign hasline=false>
 									<#if expense.instructionTop??>
@@ -141,7 +141,7 @@
 								</table>
 								<#-- END Report Container with Border -->
 								<#-- Footer -->
-								<table cellpadding="0" cellspacing="0" width="100%" style="background:#EBEEF0; font-size:9pt; font-weight:normal; color:#404040;">
+								<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; color:#9FA4A6;">
 									<#-- This will visualize both the receiptLink and the report ID -->
 									<#if expense.receiptLink?? && expense.hasReportId!false >
 										<@writeReceiptLink link=expense.receiptLink!BLANK reportIdLabel="${replaceWithConstant('Report ID')}" reportId="${expense.reportId!BLANK}" footer=true />
