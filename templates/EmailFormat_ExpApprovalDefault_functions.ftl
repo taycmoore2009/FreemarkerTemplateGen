@@ -56,9 +56,9 @@
 	<#return ((percent*width)/100)?round?string >
 </#function>
 
-<#macro columnData tdstyle="" divstyle="" valign="top" data="${HTML_SPACE}" width="${BLANK}">
+<#macro columnData tdstyle="" divstyle="" valign="top" data="${HTML_SPACE}" width="${BLANK}" colspan="1">
 	<#if (width?length>0)>
-		<td valign="${valign}" style="${tdstyle}" width="${width}">
+		<td valign="${valign}" style="${tdstyle}" width="${width}" colspan="${colspan}">
 			<@divData style="${divstyle}" value="${data}" />
 		</td>
 	<#else>
@@ -225,8 +225,8 @@
 	<#if args?? && args?has_content && (args?size>1)>
 		<#-- Info row which contains emails -->
 		<tr>
-			<td colspan="2">
-				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:9pt; color:#404040;">
+			<td colspan="2" align="center">
+				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:13px; max-width: 452px; margin: 20px 0px;color:${topinfo?string('#404040','#9FA4A6')}">
 					<#if topinfo>
 						<@writeBottompage />
 					</#if>
@@ -244,45 +244,26 @@
 							</div>
 						</td>
 						<td valign="top">
-							<div style="font-family:tahoma,arial,sans-serif; max-width:560px; margin-left:5px; margin-right:5px;">
-								<@spanData value="${replaceWithConstant('instructions2')}"/><b>${replaceWithConstant('accept')}</b><@spanData value="${replaceWithConstant('or')}"/><b>${replaceWithConstant('return')}</b><@spanData value="${replaceWithConstant('instructions3')}"/>
-								<br/>
-								<@spanData value="${replaceWithConstant('instructions6')}"/><b>${replaceWithConstant('forward')}</b><@spanData value="${replaceWithConstant('instructions4')}"/>
-								<a href="" style="color:#404040;  text-decoration:none; font-family:tahoma,arial,sans-serif;">
-									<span style="color:#404040;  text-decoration:none; font-family:tahoma,arial,sans-serif;">
-										${args[0]}
-									</span>
-								</a>
-								<@spanData value="${replaceWithConstant('instructions7')}"/>
-								<a href="" style="color:#404040;  text-decoration:none; font-family:tahoma,arial,sans-serif;">
-									<span style="color:#404040;  text-decoration:none; font-family:tahoma,arial,sans-serif;">
-										${args[1]!BLANK}
-									</span>
-								</a>
-								<@spanData value="${replaceWithConstant('instructions5')}"/>
-							</div>
-						</td>
-					</tr>
-					<#if InstructionsViewReportText_URL?? && (InstructionsViewReportText_URL?length>0)>
-						<#local effectiveText = InstructionsViewReportText_URL>
-					<#else>
-						<#local effectiveText = getMessageProperty("expense.email.text.instructionsViewReportText_url")>
-					</#if>
-					<#if Instructions_URL?? && (Instructions_URL?length>0)>
-						<#local effectiveUrl = Instructions_URL>
-					<#else>
-						<#local effectiveUrl = "https://app.chromeriver.com">
-					</#if>
-					<tr>
-						<td valign="top" colspan="2">
-							<div style="font-family:tahoma,arial,sans-serif; max-width:596px; margin-left:5px; margin-right:5px;">
-								<br/>
-								<@spanData value=effectiveText />
-								<a href="${effectiveUrl}" style="text-decoration:underline; font-family:tahoma,arial,sans-serif;">
-									<@spanData value= getMessageProperty("expense.email.text.click_here") />
-								</a>
-								<@spanData value="." />
-							</div>
+							<ul style="font-family:tahoma,arial,sans-serif; max-width:560px; margin-left:5px; margin-right:5px;">
+								<li>
+									<@spanData value="${replaceWithConstant('instructions2')}"/><b>${replaceWithConstant('accept')}</b><@spanData value="${replaceWithConstant('or')}"/><b>${replaceWithConstant('return')}</b><@spanData value="${replaceWithConstant('instructions3')}"/>
+								</li>
+								<li>
+									<@spanData value="${replaceWithConstant('instructions6')}"/><b>${replaceWithConstant('forward')}</b><@spanData value="${replaceWithConstant('instructions4')}"/>
+									<a href="" style="color:#58C4D7;  text-decoration:none; font-family:tahoma,arial,sans-serif;">
+										<span style="color:#58C4D7;  text-decoration:none; font-family:tahoma,arial,sans-serif;">
+											${args[0]}
+										</span>
+									</a>
+									<@spanData value="${replaceWithConstant('instructions7')}"/>
+									<a href="" style="color:#58C4D7;  text-decoration:none; font-family:tahoma,arial,sans-serif;">
+										<span style="color:#58C4D7;  text-decoration:none; font-family:tahoma,arial,sans-serif;">
+											${args[1]!BLANK}
+										</span>
+									</a>
+									<@spanData value="${replaceWithConstant('instructions5')}"/>
+								</li>
+							</ul>
 						</td>
 					</tr>
 					<#if topinfo>
@@ -559,10 +540,15 @@
 								<tr>
 									<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(accountsummary4items[0])}"
 										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:79px;" data="${row[0]}"/>
-									<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(accountsummary4items[1])}"
-										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[1]}"/>
-									<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(accountsummary4items[2])}"
-										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[2]}"/>
+									<#if row[2]?has_content>
+										<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(accountsummary4items[1])}"
+											divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[1]}"/>
+										<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(accountsummary4items[2])}"
+											divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[2]}"/>
+									<#else>
+										<@columnData colspan='2' tdstyle="${styles_for_border}" width="${precentToPixelConverter(accountsummary4items[1])}"
+											divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[1]}"/>
+									</#if>
 									<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(accountsummary4items[3])}"
 										divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" data="${row[3]}"/>
 								</tr>
@@ -732,6 +718,7 @@
             					</#if>
 								<#local j=0 >
 								<#local m=0 >
+								<#local l=0 >
             					<#if block?? && (block?size>0)>
             						<#list block as args>
             							<#if (args?size=0)>
@@ -758,10 +745,10 @@
         											<#break>
         											<#case 3> <#-- actually case 2 -->
         												<tr>
-        													<td class="tdcolumn" style="border-bottom: 1pt solid #E7E9EA; line-height: 36px;" valign="top" colspan="1" width="${precentToPixelConverter(24)}">
-        														<@divData style="margin-left:20px; margin-right:5px; font-family:tahoma,arial,sans-serif; width:100px; display: inline-block; padding-right: 5px" value="${replaceWithConstant(args[1]!BLANK )}" />
+        													<td class="tdcolumn" style="${(l=0)?string('border-top: 1pt solid #B4C1C6;', '')} border-bottom: 1pt solid #E7E9EA; line-height: 36px;" valign="top" colspan="2" width="${precentToPixelConverter(24)}">
+        														<@divData style="margin-left:20px; margin-right:5px; font-family:tahoma,arial,sans-serif; display: inline-block; padding-right: 5px" value="${replaceWithConstant(args[1]!BLANK )}" />
         													</td>
-        													<td style="border-bottom: 1pt solid #E7E9EA; text-align: right; line-height: 36px;" valign="top" colspan="3" width="${precentToPixelConverter(76)}">
+        													<td style="${(l=0)?string('border-top: 1pt solid #B4C1C6;', '')} border-bottom: 1pt solid #E7E9EA; text-align: right; line-height: 36px;" valign="top" colspan="2" width="${precentToPixelConverter(76)}">
         														<@divData style="display: inline-block; padding-left: 5px" value="${replaceWithConstantForUDA(args[2]!BLANK )}" />
         													</td>
         												</tr>
@@ -852,11 +839,11 @@
         											<#break>
         											<#case 2>
         												<tr>
-        													<td class="tdcolumn" style="${(l=0)?string('border-top: 1pt solid #B4C1C6;', '')} border-bottom: 1pt solid #E7E9EA; line-height: 36px;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
-        														<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;" value="${replaceWithConstant(args[0])}" />
+        													<td class="tdcolumn" style="${(l=0)?string('border-top: 1pt solid #B4C1C6;', '')} border-bottom: 1pt solid #E7E9EA; line-height: 36px;" valign="top" colspan="2" width="${precentToPixelConverter(20)}">
+        														<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstant(args[0])}" />
         													</td>
-        													<td style="${(l=0)?string('border-top: 1pt solid #B4C1C6;', '')} border-bottom: 1pt solid #E7E9EA; text-align: right; line-height: 36px;" valign="top" colspan="3" width="${precentToPixelConverter(80)}">
-        														<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:477px;" value="${replaceWithConstantForUDA(args[1]!BLANK )}" />
+        													<td style="${(l=0)?string('border-top: 1pt solid #B4C1C6;', '')} border-bottom: 1pt solid #E7E9EA; text-align: right; line-height: 36px;" valign="top" colspan="2" width="${precentToPixelConverter(80)}">
+        														<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstantForUDA(args[1]!BLANK )}" />
         													</td>
         												</tr>
         												<#local l=l+1>
@@ -866,12 +853,21 @@
         													<td style="${(p=0 && n=0)?string('border-top: 1pt solid #B4C1C6;', '')}" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
         														<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;" value="${args[0]}" />
         													</td>
-        													<td style="${(p=0 && n=0)?string('border-top: 1pt solid #B4C1C6;', '')}" valign="top" colspan="1" width="${precentToPixelConverter(30)}">
-        														<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:179px;" value="${args[1]!BLANK}" />
-        													</td>
-        													<td style="${(p=0 && n=0)?string('border-top: 1pt solid #B4C1C6;', '')}" valign="top" colspan="2" width="${precentToPixelConverter(50)}">
-        														<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:298px;" value="${args[2]!BLANK}" />
-        													</td>
+															<#if args[2]?replace(" ", "")?has_content>
+																<td style="${(p=0 && n=0)?string('border-top: 1pt solid #B4C1C6;', '')}" valign="top" colspan="1" width="${precentToPixelConverter(30)}">
+																	<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:179px;" value="${args[1]!BLANK}" />
+																</td>
+																<td style="${(p=0 && n=0)?string('border-top: 1pt solid #B4C1C6;', '')}" valign="top" colspan="2" width="${precentToPixelConverter(50)}">
+																	<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:298px;" value="${args[2]!BLANK}" />
+																</td>
+															<#else>
+																<td style="${(p=0 && n=0)?string('border-top: 1pt solid #B4C1C6;', '')}" valign="top" colspan="2" width="${precentToPixelConverter(30)}">
+																	<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:179px;" value="${args[1]!BLANK}" />
+																</td>
+																<td style="${(p=0 && n=0)?string('border-top: 1pt solid #B4C1C6;', '')}" valign="top" colspan="1" width="${precentToPixelConverter(50)}">
+																	<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:298px;" value="${args[2]!BLANK}" />
+																</td>
+															</#if>
         												</tr>
         												<#local p=p+1>
         											<#break>
@@ -988,30 +984,42 @@
         								<#local complianceItems=[]>
     								</#if>
     								<#if complianceItems?has_content>
-    									<tr>
-    										<td style="border-top: 1pt solid #B4C1C6;" colspan="4">
-    											<div style="color:#C00000; font-weight:bold; text-align:left; margin-left:5px; font-family:tahoma,arial,sans-serif;">
-				            						${replaceWithConstant('Compliance Warning')}
-				            					</div>
-    										</td>
-    									</tr>
-    									<#list complianceItems as complianceItem>
-    										<#if complianceItem?has_content>
-    											<tr>
-    												<td class="tdcolumn" style="${(ind=0)?string('border-top: 1pt solid #B4C1C6;','')}" valign="top" colspan="1" width="${precentToPixelConverter(25)}">
-    													<#if complianceItem[0]?trim?lower_case=="response">
-															<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;" value="${replaceWithConstant(complianceItem[0])}" />
-														<#else>
-															<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;" value="${replaceWithConstantForItemType(complianceItem[0])}" />
-														</#if>
-    												</td>
-    												<td style="${(ind=0)?string('border-top: 1pt solid #B4C1C6;','')} text-align: right;" valign="top" colspan="3" width="${precentToPixelConverter(75)}">
-    													<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:477px;" value="${complianceItem[1]}" />
-    												</td>
-    											</tr>
-    											<#local ind=ind+1>
-    										</#if>
-    									</#list>
+										<tr>
+											<td colspan="4">
+												<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; margin: 5px 0;">
+													<tbody style="background: #FCEEDB;">
+														<tr>
+															<td style="padding: 0px 3px;" valign="top" colspan="2">
+																<div style="color:#EC971F; font-size:10pt; font-weight: 600; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
+																	${replaceWithConstant('Compliance Warning')}
+																</div>
+															</td>
+														</tr>
+														<#list complianceItems as data>
+    														<#if data?has_content>
+															<tr>
+																<td class="tdcolumn" style="color: #9b9b9b; font-weight: bold; padding: 3px 10px 0px 3px;"  width="${precentToPixelConverter(25)}" valign="top">
+																	<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:149px;">
+																		<#if data[0]?trim?lower_case=="response" >
+																			${replaceWithConstant(data[0])}
+																		<#else>
+																			${replaceWithConstantForItemType(data[0])}
+																		</#if>
+																	</div>
+																</td>
+																<td style="color: #475156; padding: 3px 10px 0px 0px;" width="${precentToPixelConverter(75)}" valign="top">
+																	<div style="margin-left:5px; margin-right:0px; font-family:tahoma,arial,sans-serif; max-width:447px;">
+																		${data[1]}
+																	</div>
+																</td>
+															</tr>
+															</#if>
+														</#list>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+    									
     								</#if>
 
     								<#if (listdataNotes?size>index)>
@@ -1022,8 +1030,8 @@
     								<#if itemNotes?has_content>
     									<tr>
     										<td style="border-top: 1pt solid #B4C1C6;" colspan="4">
-    											<div style="color:#C00000; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; font-family:tahoma,arial,sans-serif;">
-				            						!! ${replaceWithConstant('Notes')} !!
+    											<div style="color:#475156; font-size:15px; font-weight:bold; text-align:left; margin-left:5px; font-family:tahoma,arial,sans-serif;">
+				            						${replaceWithConstant('Notes')}
 				            					</div>
     										</td>
     									</tr>

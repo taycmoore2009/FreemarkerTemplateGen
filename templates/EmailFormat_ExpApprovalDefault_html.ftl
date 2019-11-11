@@ -15,7 +15,13 @@
 <#assign udaTypePrefix = 'uda.'>
 <#assign udfTypePrefix = 'udf.'>
 
-<#include "templates/EmailFormat_ExpApprovalDefault_functions.ftl">
+<#if model.data.useNewCSS >
+	<#include "templates/EmailFormat_ExpApprovalDefault_functions.ftl">
+	<#assign bgColor = '#475156'>
+<#else>
+	<#include "templates/EmailFormat_ExpApprovalDefault_functions.ftl">
+	<#assign bgColor = '#4EBEF0'>
+</#if>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,8 +30,8 @@
 	<style type='text/css'>#maintable {width:600px;}@media screen and (max-width: 660px){#maintable{width:100%; max-width:600px;}<!--.tdcolumn{width: 149px;}--><!--#tdcol{width: 149px;}-->
 	</style>
 	
-	<body style="background:#475156;">
-		<table cellpadding="0" cellspacing="0" width="100%" style="background:#475156;">
+	<body style="background:${bgColor};">
+		<table cellpadding="0" cellspacing="0" width="100%" style="background:${bgColor};">
 			<tr>
 				<td>
 					<#-- Report and Footer Wrapper -->
@@ -33,10 +39,14 @@
 						<tr>
 							<td>
 								<#-- Header with report id -->
-								<table cellpadding="0" cellspacing="0" width="100%" style="margin-top: 50px; padding: 8px 0; background:#475156; font-size:9pt; font-weight:normal; color:#9FA4AC;">
+								<table cellpadding="0" cellspacing="0" width="100%" style="<#if model.data.useNewCSS >margin-top: 10px; padding: 8px 0; color:#9FA4AC; <#else>color: #404040;</#if>background:${bgColor}; font-size:9pt; font-weight:normal;">
 									<tr>
-										<td height="15" width="100%">
-											<span> ${HTML_SPACE} </span>
+										<td height="15" width="100%" style="padding-bottom: 13px; text-align: center;">
+												<#if model.data.useNewCSS >
+													<span><img src="https://s3.amazonaws.com/chromeriver-cdn-ext-cx-all/css/img/email/CR-logo.png" /></span>
+												<#else>
+													<span> ${HTML_SPACE} </span>
+												</#if>
 										</td>
 									</tr>
 									<#if expense.hasReportIdInHeader!false >
@@ -48,7 +58,7 @@
 								</table>
 								<#-- End Header with report id -->
 								<#-- Report Container with Border -->
-								<table cellpadding="0" cellspacing="0" align="center" width="100%" style="background:#FFFFFF; border-collapse: collapse; border-width: 0px;  border-radius: 5px 5px 0 0;">
+								<table cellpadding="0" cellspacing="0" align="center" width="100%" style="background:#FFFFFF; border-collapse: collapse; <#if model.data.useNewCSS >border-width: 0px;  border-radius: 5px 5px 0 0;<#else>border: 2pt solid #B4C1C6;</#if>">
 									<@writeHeader value=expense.header!DUMMY_ARRAY />
 									<#assign hasline=false>
 									<#if expense.instructionTop??>
@@ -82,6 +92,7 @@
 												<#case "Header">
 												<#case "Header_Standard">
 												<#case "Header_Details">
+												<#case "Header_AmountCustomer">
 													<@writeExpenseRow expenserowdata=expense.expenserowdata!DUMMY_ARRAY />
 												<#break>
 												
@@ -99,6 +110,10 @@
 													<@writeExpensepurpose name="${replaceWithConstant('Reason for Assignment')}" listdata=expense.reasonforassignment!DUMMY_ARRAY />
 												<#break>
 												
+												<#case "Business_Purpose">
+													<@writeExpensepurpose name="${replaceWithConstant('Business Purpose')}" listdata=expense.businesspurpose!DUMMY_ARRAY />
+												<#break>
+
 												<#case "Account_Summary">
 													<@writeExpenseaccountsummary name="${replaceWithConstant('Account Summary')}" listdata=expense.accountsummary!DUMMY_ARRAY />
 												<#break>
@@ -141,7 +156,7 @@
 								</table>
 								<#-- END Report Container with Border -->
 								<#-- Footer -->
-								<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; color:#9FA4A6;">
+								<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; <#if model.data.useNewCSS >color:#9FA4A6;<#else>background:#EBEEF0; color:404040;</#if>">
 									<#-- This will visualize both the receiptLink and the report ID -->
 									<#if expense.receiptLink?? && expense.hasReportId!false >
 										<@writeReceiptLink link=expense.receiptLink!BLANK reportIdLabel="${replaceWithConstant('Report ID')}" reportId="${expense.reportId!BLANK}" footer=true />

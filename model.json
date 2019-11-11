@@ -1,414 +1,111 @@
 {
    "model": {
      "data": {
-       "emailData": {  
-         "list_labels":[  
-            "Subject1",
-            "Header",
-            "Header_Details",
-            "Compliance",
-            "PolicyCompliance",
-            "Reason",
-            "Account_Summary",
-            "PreApproval_Summary",
-            "Guest_Details",
-            "Expense_Details",
-            "Attorney_Budget",
-            "Financial_Summary",
-            "Expense_Summary",
-            "Buttons_Bottom",
-            "Instructions_Bottom"
+         "useNewCSS": true,
+       "emailData": {
+         "list_labels": ["Subject1", "Header", "Compliance", "Business_Purpose", "Account_Summary", "Expense_Summary", "Guest_Details", "Financial_Summary", "Buttons_Bottom", "Instructions_Bottom"],
+         "header": ["ACTION REQUIRED", "Chrome River"],
+         "expenserowdata": [
+            ["Expense Report for", "Chrome River Green Eggs & Ham"],
+            ["Report Name", "Expenses on 07/11/2019 03:48 PM"],
+            ["Submit Date", "07/11/2019"],
+            ["Expense Dates", "07/11/2019 - 07/11/2019"],
+            ["Total Expenses", "15,00 USD"]
          ],
-         "header":[  
-            "ACTION REQUIRED",
-            "Chrome River"
+         "inforow": "",
+         "compliancewarning": [
+            ["Taxi", "Duplicate Expense"],
+            ["Response", "test"]
          ],
-         "expenserowdata":[  
-            [  
-               "Expense Report for",
-               "Mark Fordham"
-            ],
-            [  
-               "Created by",
-               "Chrome River Electronic Arts"
-            ],
-            [  
-               "Report Name",
-               "test5555"
-            ],
-            [  
-               "Submit Date",
-               "Jul. 25, 2019"
-            ],
-            [  
-               "Expense Dates",
-               "Jul. 25, 2019 - Jul. 25, 2019"
-            ],
-            [  
-               "Total Expenses",
-               "11.00 AUD"
-            ]
+         "expenseReportNotes": [],
+         "businesspurpose": ["testest"],
+         "reasonforassignment": [],
+         "businesspurpose104": [],
+         "accountsummary": [
+            ["99999", "GROUP ROUTING", "GROUP ROUTING", "15,00"]
          ],
-         "inforow":"ffff",
-         "compliancewarning":[  
-            [  
-               "Compliance",
-               "ACTION REQUIRED - Credit Card Transactions over 45 days old"
-            ],
-            [  
-               "Response",
-               "asddsaasd"
-            ]
+         "allocation": [],
+         "accountsummary84": [],
+         "currency": "USD",
+         "expensesummary": [
+            ["Taxi", "15,00 USD"]
          ],
-         "expenseReportNotes":[
-            ["Note 1", "Issue", "This is the reason I think. I'm not sure because I have to guess these things"],
-            ["Note 2", "Issue", "I'm still not sure if that's what this is, I'm still guessing"],
-            ["Note 3", "test2", "Lorem Ipsum"]
+         "udadatadetail": [],
+         "financialsummary": [
+            ["Total Expense Report", "15,00 USD"],
+            ["Less Company Paid", "0.00 USD"],
+            ["Amount Due Employee", "15,00 USD"]
          ],
-         "businesspurpose":[
-            "purpose 1",
-            "This is another business purpose"
-         ],
-         "reasonforassignment":[
-            "purpose 1",
-            "This is another reason for assignment"
-         ],
-         "accountsummary":[
-            [  
-               "510.2040.3108",
-               "2040",
-               "3108",
-               "11.00"
-            ],
-            [  
-               " ",
-               "000000-NOT REQUIRED-IT - OTHER - OTHER",
-               "",
-               " "
-            ],
-            [  
-               "210.504.58",
-               "240",
-               "318",
-               "12.00"
-            ],
-            [
-               "",
-               "Lorem Ipsum",
-               "",
-               ""
-            ],
-            [  
-               "",
-               "Lorem Ipsum 2",
-               "",
-               ""
-            ]
-         ],
-         "currency":"AUD",
-         "expensesummary":[  
-            [  
-               "Employee Meals",
-               "11.00 AUD"
-            ],
-            [
-               "Parking",
-               "12.00 AUD"
-            ]
-         ],
-         "udadatadetail":[
-            [
-               "Guest 1",
-               "Steve Irwin",
-               "Australia Zoo",
-               "2",
-               "6.00",
-               "3.00"
-            ],
-            [
-               "Guest 2",
-               "Brandi Irwin",
-               "Australia Zoo",
-               "1",
-               "5.00",
-               "1.00"
-            ]
-         ],
-         "financialsummary":[  
-            [  
-               "Total Expense Report",
-               "23.00 AUD"
-            ],
-            [  
-               "Less Company Paid",
-               "1.00 AUD"
-            ],
-            [  
-               "Amount Due Employee",
-               "22.00 AUD"
-            ],
-            [  
-               "Total Minus Personal",
-               "22.00 AUD"
-            ]
-         ],
-         "preapprovalsummary":[
-            ["Adjustments", "1.00 AUD"],
-            ["Parking", "12.00 AUD", "12.00 AUD"]
-         ],
-         "paCurrency":"AUD",
-         "emailVersionUID":"9A013C15-E495-6D3D-145C-9B78494847F7",
-         "itemnotesmultilevel":[
-            [
-               ["NOtes1", "Notes2", "3notes"],
-               ["Njkslef4", "asfesef", "asfeesfse"]
-            ],
-            [
-               ["Notes for parking", "blah", "lorem ipsubm blah blah blah"]
-            ]
-         ],
-         "instructionsURL":"https://expenses.work.ea.com",
-         "instructionsViewReportTextURL":"View Report!!!",
-         "firstName":"Mark",
-         "lastName":"Fordham",
-         "isWatcherNotification":false,
-         "infourlsinbottom":[  
-            "approve@qa-expense.ca1.chromeriver.com",
-            "return@qa-expense.ca1.chromeriver.com"
-         ],
-         "instructionTop":"HEre are the top instructions<br>You can add custom instructions here<br>This can be literally anything",
-         "instructionBottom":"HEre are the bottom instructions<br>You can add custom instructions here<br>This can be literally anything",
-         "receiptLink":"www.facebook.com",
-         "allReceiptsLink":"https://google.com",
-         "subject":[  
-            "email_expense_approval_subject",
-            "Mark Fordham"
-         ],
-         "lineItemImagesPageIndexeURLs":[  
-            "https://www.google.com",
-            "test"
-         ],
-         "pageminwidth":"480px;",
-         "tablewidth":"100%",
-         "hasReportId":true,
-         "attorneyBudgetrowdata":[
-            ["test2", "test2", "test2"],
-            ["test1", "test2", "test3"]
-         ],
-         "complianceWarningItems":[  
-            [  
-               [  
-                  "Employee Meals",
-                  "Receipt Required"
-               ],
-               [  
-                  "Response",
-                  "ewqewqewqweq"
-               ]
-            ]
-         ],
-         "expensedetailsItems":[  
-            [  
-               [  
-                  "07/25/2019",
-                  "Employee Meals",
-                  "3108",
-                  "11.00 AUD"
-               ],
-               [  
-                  " ",
-                  "510.2040.3108",
-                  "2040"
-               ],
-               [  
-                  " ",
-                  "000000-NOT REQUIRED-IT - OTHER - OTHER",
-                  " "
-               ],
-               [  
-                  "Description",
-                  "qwweqewqweq"
-               ],
-               [  
-                  "Tax Code",
-                  "AUZERO"
-               ],
-               [  
-                  "Tax %",
-                  "0.00%"
-               ],
-               [  
-                  "Tax Amount",
-                  "0.00 AUD"
-               ],
-               [  
-                  "lbl_udf_TaxInvoice",
-                  "0"
-               ],
-               [  
-                  "Meal Type",
-                  ""
-               ],
-               [  
-                  "Merchant",
-                  "qweqweqw"
-               ],
-               [  
-                  "lbl_udf_AMEXMerchant",
-                  ""
-               ],
-               [  
-                  "Tip %",
-                  "0.00"
-               ],
-               [  
-                  "lbl_udf_ItemizedReceipt",
-                  "0"
-               ],
-               [  
-                  "lbl_udf_VendorBusRegNum",
-                  ""
-               ],
-               [  
-                  "AMEXCardType",
-                  ""
-               ],
-               [  
-                  "Tip Amount",
-                  "0.00"
-               ],
-               [  
-                  "lbl_udf_MCC",
-                  ""
-               ],
-               [  
-                  "lbl_udf_SIC",
-                  ""
-               ],
-               [  
-                  "Location",
-                  "AustraliaAU2"
-               ],
-               [  
-                  "Cost Code",
-                  "536001.0000.000000"
-               ],
-               [  
-                  "Reason Assigned",
-                  "Expense Reports submitted by a delegate must be approved by the Expense Owner."
-               ],
-               [  
-                  "AmountSpentConverted",
-                  "11.00 AUD"
-               ]
-            ],[  
-               [  
-                  "07/25/2019",
-                  "Parking",
-                  "210.504.58",
-                  "12.00 AUD"
-               ],
-               [  
-                  " ",
-                  "210.504.58",
-                  "240"
-               ],
-               [  
-                  " ",
-                  "Lorem Ipsum",
-                  " "
-               ],
-               [  
-                  " ",
-                  "Lorem Ipsum 2",
-                  " "
-               ],
-               [  
-                  "Description",
-                  "qwweqewqweq"
-               ],
-               [  
-                  "Tax Code",
-                  "AUZERO"
-               ],
-               [  
-                  "Tax %",
-                  "0.00%"
-               ],
-               [  
-                  "Tax Amount",
-                  "0.00 AUD"
-               ],
-               [  
-                  "lbl_udf_TaxInvoice",
-                  "0"
-               ],
-               [  
-                  "Merchant",
-                  "qweqweqw"
-               ],
-               [  
-                  "lbl_udf_AMEXMerchant",
-                  "jklhjkl878778"
-               ],
-               [  
-                  "Tip %",
-                  "0.00"
-               ],
-               [  
-                  "lbl_udf_ItemizedReceipt",
-                  "0"
-               ],
-               [  
-                  "lbl_udf_VendorBusRegNum",
-                  ""
-               ],
-               [  
-                  "AMEXCardType",
-                  "Debit"
-               ],
-               [  
-                  "Tip Amount",
-                  "0.00"
-               ],
-               [  
-                  "lbl_udf_MCC",
-                  ""
-               ],
-               [  
-                  "lbl_udf_SIC",
-                  ""
-               ],
-               [  
-                  "Location",
-                  "AustraliaAU2"
-               ],
-               [  
-                  "Cost Code",
-                  "536001.0000.000000"
-               ],
-               [  
-                  "AmountSpentConverted",
-                  "12.00 AUD"
-               ]
-            ]
-         ],
-         "reportId":"QA00-1934-0296",
-         "button":[  
-            "approve@qa-expense.ca1.chromeriver.com",
-            "return@qa-expense.ca1.chromeriver.com"
-         ],
-         "buttontop":[
-            "accept",
-            "return"
-         ],
-         "hasPreApprovalIdInHeader":true,
-         "hasReportIdInHeader":true,
-         "pagemaxwidth":"560px;",
-         "pabutton":[
-            "accept",
-            "return"
-         ]
+         "preapprovalsummary": [],
+         "paCurrency": "",
+         "notes": [],
+         "combinedemailrows": [],
+         "emailVersionUID": "AE27A8DE-C583-5E4B-9D9C-7F8C3C4317C9",
+         "reportnotes109": [],
+         "itemnotes109": [],
+         "addtlnotes": [],
+         "expensedetails": [],
+         "expensedetails_": [],
+         "reportnotes": [],
+         "reportnoteskirkland": [],
+         "itemnotes": [],
+         "itemnoteskirkland": [],
+         "internalguests": [],
+         "externalguests": [],
+         "description": [],
+         "expensetransactions": [],
+         "instructions": [],
+         "instructionsURL": "https://dev-dispatch.us1.chromeriver.com/expense-reports-app/approvals/DEV028702384?redirect=true",
+         "instructionsViewReportTextURL": "",
+         "instructionshsr": [],
+         "expenseitems": [],
+         "cmattersummary": [],
+         "ncmattersummary": [],
+         "tcancexpensesummary": [],
+         "grandtotal": "",
+         "itemdetails": [],
+         "unsubmittedreports": [],
+         "unusedtransactions": [],
+         "unusedfirmpaidreminderdays30": [],
+         "unusedfirmpaidreminderdays31_60": [],
+         "unusedfirmpaidreminderdays61_90": [],
+         "unusedfirmpaidreminderdays90Plus": [],
+         "total": ["", ""],
+         "unusedrirmpaiditemsinfo": ["", ""],
+         "unapproveditemsreminder": [],
+         "preapprovalunapproveditems": [],
+         "reportName": "",
+         "firstName": "Chrome River",
+         "lastName": "Green Eggs & Ham",
+         "isWatcherNotification": false,
+         "inforows": [],
+         "inforowswhichcontainsemails": [],
+         "infourls": "",
+         "infourlsinbottom": ["approve@dev-expense.us1.chromeriver.com", "return@dev-expense.us1.chromeriver.com"],
+         "instructionTop": "",
+         "receiptLink": "",
+         "allReceiptsLink": "",
+         "subject": ["email_expense_approval_subject", "Chrome River Green Eggs & Ham"],
+         "lineItemImagesPageIndexeURLs": [],
+         "reportId": "DEV0-2870-2384",
+         "attorneyBudget": [],
+         "expensedetailsItems": [],
+         "complianceWarningItems": [],
+         "notesItems": [],
+         "pacnotes": [],
+         "pacnoteskirkland": [],
+         "unusedPaidItems": [],
+         "unapprovedInvoicesReminder": [],
+         "button": ["approve@dev-expense.us1.chromeriver.com", "return@dev-expense.us1.chromeriver.com"],
+         "pabutton": "",
+         "buttontop": "",
+         "pagemaxwidth": "560px;",
+         "pageminwidth": "480px;",
+         "tablewidth": "100%",
+         "hasReportId": true,
+         "hasReportIdInHeader": true,
+         "hasPreApprovalIdInHeader": false,
+         "routingDescriptions": []
       }
      }
    }
