@@ -100,7 +100,7 @@ to replace placeholders like {0},{1}... within the message found by "key"-->
 <#macro writeID label="${HTML_SPACE}" value="">
     <tr>
     	<td align='right' valign='top' width='100%'>
-    		<@divWithLabelValue label="${label}" value="${value}" style="text-align:right; margin-left:5px; margin-right:5px; padding-bottom:2px; padding-top:2px; font-family:tahoma,arial,sans-serif;"/>
+    		<@divWithLabelValue label="${label}" value="${value}" style="line-height: 40px; text-align:right; margin-left:5px; margin-right:5px; padding-bottom:2px; padding-top:2px; font-family:tahoma,arial,sans-serif;"/>
     	</td>
     </tr>
 </#macro>
@@ -121,9 +121,9 @@ and not to break existing logic -->
 	<#if valueToBeUsed?? && (valueToBeUsed?length>0)>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:9pt; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:left; font-size: 13px;; color:#404040; background:#FFFFFF;">
 					<@dataDIVRow />
-					<@dataDIVRow tdstyle="${BLANK}" divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;" data="${valueToBeUsed}" />
+					<@dataDIVRow tdstyle="${BLANK}" divstyle="font-family:tahoma,arial,sans-serif; max-width:596px;" data="${valueToBeUsed}" />
 					<@dataDIVRow />
 				</table>
 			</td>
@@ -139,12 +139,12 @@ and not to break existing logic -->
 	<#if values?has_content>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:9pt; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:left; font-size: 13px;; color:#404040; background:#FFFFFF;">
 					<#list values as value>
 						<#if value_index = 0>
 							<@dataDIVRow />
 						</#if>
-						<@dataDIVRow divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px; -webkit-text-size-adjust:none;" data="${replaceWithConstant(value)}"  />
+						<@dataDIVRow divstyle="font-family:tahoma,arial,sans-serif; max-width:596px; -webkit-text-size-adjust:none;" data="${replaceWithConstant(value)}"  />
 						<@dataDIVRow />
 					</#list>
 				</table>
@@ -157,12 +157,12 @@ and not to break existing logic -->
 	<#if value?has_content && (value?size=2)>
 		<tr>
 			<td>
-				<table cellpadding='0' cellspacing='0' width='100%' style='background:#0089B7; color:#FFFFFF; font-size:12pt;'>
+				<table cellpadding='0' cellspacing='0' width='100%' style='background:#31B4CB; color:#FFFFFF; font-size:17px; border-radius: 5px 5px 0 0;'>
 					<tr>
-						<td style='border-bottom: 1pt solid #B4C1C6; ' valign='top'>
+						<td style='border-bottom: 1pt solid #B4C1C6; padding: 14px 15px 14px 28px;' valign='top'>
 							<@divData value="${replaceWithConstant(value[0])}" />
 						</td>
-						<td style='border-bottom: 1pt solid #B4C1C6; ' valign='top'>
+						<td style='border-bottom: 1pt solid #B4C1C6; padding: 14px 15px 14px 28px;' valign='top'>
 							<@divData style="text-align:right; font-weight:normal; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${value[1]}" />
 						</td>
 					</tr>
@@ -178,10 +178,10 @@ and not to break existing logic -->
 	<#list headerNotes as headerNote>
 		<tr>
 			<td valign='top' width='100%'>
-				<div style='text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;'>
+				<div style='text-align:left; font-family:tahoma,arial,sans-serif; max-width:596px; padding: 0 24px;'>
 					${replaceWithConstant(headerNote[0])} 
 					<#if (headerNote[1]?length>0)>
-						<u style=' color:#0089B7; text-decoration:underline; font-family:tahoma,arial,sans-serif; '>${headerNote[1]} </u>
+						<u style=' color:#475156; text-decoration:underline; font-family:tahoma,arial,sans-serif; '>${headerNote[1]} </u>
 					</#if>
 				</div>
 			</td>
@@ -249,7 +249,7 @@ and not to break existing logic -->
 	<#if inforowswhichcontainsemails?has_content>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:9pt; color:#404040; background:${header?string('#FFFFFF;','#EBEEF0;')}")>
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; color: #9FA4A6; font-size: 13px;text-align: center;">
 					<#if header>
 						<@dataDIVRow />
 					</#if>
@@ -268,7 +268,7 @@ and not to break existing logic -->
 											<@spanData value="${inforowswhichcontainsemail[0]}"/>
 										</#if>
 										<#if (inforowswhichcontainsemail[1]?length>1)>
-											<u style="color:#0089B7; text-decoration:underline; font-family:tahoma,arial,sans-serif;  -webkit-text-size-adjust:none;">
+											<u style="text-decoration:underline; font-family:tahoma,arial,sans-serif; -webkit-text-size-adjust:none;">
 												${inforowswhichcontainsemail[1]}
 											</u>
 										<#elseif (inforowswhichcontainsemail[1]?length=1)>
@@ -296,7 +296,7 @@ and not to break existing logic -->
 		<#assign i = 0 >
 		<tr>
 	    	<td>
-	            <table cellpadding="0" cellspacing="0" align="center" width="100%" style="font-size:9pt; font-weight:normal; color:#404040; background:#FFFFFF;">
+	            <table cellpadding="0" cellspacing="0" align="center" width="100%" style="line-height: 25px; padding: 0 24px; font-size: 13px;; font-weight:normal; color:#404040; background:#FFFFFF;">
 	            	<#list expenserowdata as expenserow>
 	            		<#if (expenserow??) && (expenserow?size > 1)>
 							<#if (expenserow[0]?upper_case?matches(replaceWithConstant('Pre-Approval Request For')?upper_case))>
@@ -304,20 +304,20 @@ and not to break existing logic -->
             				</#if>
             				<#if expenserow_index = 0>
             					<tr>
-            						<td id="tdcol" style="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(width_td)}">
-            							<@divData style="text-align:right; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:${precentToPixelConverter(width_td)}px;" value="${replaceWithConstant(expenserow[0])}" />
+            						<td id="tdcol" style="border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(width_td)}">
+            							<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:${precentToPixelConverter(width_td)}px;" value="${replaceWithConstant(expenserow[0])}" />
             						</td>
             						<td style="border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(100-width_td)}">
-            							<@divData style="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:${precentToPixelConverter((100-width_td))}px;" value="${expenserow[1]}" />
+            							<@divData style="font-weight: bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:${precentToPixelConverter((100-width_td))}px;" value="${expenserow[1]}" />
             						</td>
             					</tr>
         					<#else>
         						<tr>
-            						<td class="tdcol" style="background:#DBEEF4; border-top: 0pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(width_td)}">
-            							<@divData style="text-align:right; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:${precentToPixelConverter(width_td)}px;" value="${replaceWithConstant(expenserow[0])}" />
+            						<td class="tdcol" style="border-top: 0pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(width_td)}">
+            							<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:${precentToPixelConverter(width_td)}px;" value="${replaceWithConstant(expenserow[0])}" />
             						</td>
             						<td  valign="top" width="${precentToPixelConverter(100-width_td)}">
-            							<@divData style="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:${precentToPixelConverter(100-width_td)}px;" value="${expenserow[1]}" />
+            							<@divData style="font-weight: bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:${precentToPixelConverter(100-width_td)}px;" value="${expenserow[1]}" />
             						</td>
             					</tr>
             				</#if>
@@ -339,18 +339,14 @@ and not to break existing logic -->
 		<#assign styles_for_border = "${BLANK}" >
 		<tr>
 	    	<td>
-    	        <table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+    	        <table cellpadding="0" cellspacing="0" width="100%" style="line-height: 30px; padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
         			<tr>
         				<td colspan="3">
-        					<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${name}" />
+        					<@divData style="color:#475156; font-size:18px; font-weight:bold; text-align:left; line-height: 27px; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${name}" />
         				<td>
         			</tr>
         			<#list listdata as row>
-        				<#if row_index = 0>
-        					<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
-        				<#else>
-        					<#assign styles_for_border = "" >
-        				</#if>
+						<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
         				<#if (row??) && (row?size > 1)>
        						<tr>
         						<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(w1)}" 
@@ -392,36 +388,32 @@ and not to break existing logic -->
 		<#assign styles_for_border = "" >
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<tbody>
 						<tr>
 							<td colspan="${sub_names?size?string}" >
-								<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${name}" />
+								<@divData style="color:#475156; font-size:18px; line-height: 27px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${name}" />
 							</td>
 						</tr>
 						<tr>
-							<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[0])}" 
+							<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[0])}" 
 								divstyle="text-align:${text_aligns[0]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[0]}"/>
-							<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[1])}" 
+							<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[1])}" 
 								divstyle="text-align:${text_aligns[1]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[1]}"/>
-							<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[2])}" 
+							<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[2])}" 
 								divstyle="text-align:${text_aligns[2]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[2]}"/>
-							<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[3])}" 
+							<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[3])}" 
 								divstyle="text-align:${text_aligns[3]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[3]}"/>
 							<#if (sub_names?size = 5)>
-								<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[4])}" 
+								<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[4])}" 
 								divstyle="text-align:${text_aligns[4]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[4]}"/>
 							</#if>		
 						</tr>
 						<#list listdata as row>	
-							<#if row_index = 0>
-            					<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
-            				<#else>
-            					<#assign styles_for_border = "" >
-            				</#if>
+							<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
             				<#if (row??) && (row?size > 3)>
             					<tr>
-            						<@columnData tdstyle="background:#EBEEF0;${styles_for_border}" 
+            						<@columnData tdstyle="${styles_for_border}" 
 										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:${text_aligns[0]} max-width:${precentToPixelConverter(widths[0])}px;" data="${row[0]}"/>
 									<@columnData tdstyle="${styles_for_border}" 
 										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:${text_aligns[1]} max-width:${precentToPixelConverter(widths[1])}px;" data="${row[1]}"/>
@@ -477,41 +469,37 @@ and not to break existing logic -->
 		<#assign styles_for_border="${BLANK}" >
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<#if bFirst>
 						<tr>
 							<td colspan="${sub_names?size?string}">
-								<@divData style="color:#0089B7; font-size:11pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${replaceWithConstant('Paid Expenses')}" />
+								<@divData style="color:#475156; font-size:18px; line-height: 24px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${replaceWithConstant('Paid Expenses')}" />
 							</td>
 						</tr>
 					</#if>
 					<tr>
 						<td colspan="${sub_names?size?string}">
-							<@divData style="font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${name}" />
+							<@divData style="font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${name}" />
 						</td>
 					</tr>
 					<tr>
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6" width="${precentToPixelConverter(widths[0])}" 
+						<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6" width="${precentToPixelConverter(widths[0])}" 
 							divstyle="text-align:${text_aligns[0]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[0]}"/>
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[1])}" 
+						<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[1])}" 
 							divstyle="text-align:${text_aligns[1]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[1]}"/>
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[2])}" 
+						<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[2])}" 
 							divstyle="text-align:${text_aligns[2]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[2]}"/>
 						<#if (sub_names?size > 3)>
-							<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[3])}" 
+							<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[3])}" 
 								divstyle="text-align:${text_aligns[3]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[3]}"/>
 						</#if>
 						<#if (sub_names?size = 5)>
-							<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[4])}" 
+							<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[4])}" 
 								divstyle="text-align:${text_aligns[4]} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${sub_names[4]}"/>
 						</#if>
 					</tr>
 					<#list listdata as row>
-						<#if row_index = 0>
-        					<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
-        				<#else>
-        					<#assign styles_for_border = "" >
-        				</#if>
+						<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
         				<#if (row??) && (row?size>2)>
         					<tr>
         						<@columnData tdstyle="${styles_for_border}" 
@@ -574,26 +562,22 @@ and not to break existing logic -->
 		<#assign styles_for_border="${BLANK}">
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<tr>
-						<@columnData tdstyle="background:#DBEEF4;  border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(30)}" 
+						<@columnData tdstyle="color: #999;  border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(30)}" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Owner')}"/>
-						<@columnData tdstyle="background:#DBEEF4;  border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(35)}" 
+						<@columnData tdstyle="color: #999;  border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(35)}" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Report Number')}"/>
-						<@columnData tdstyle="background:#DBEEF4;  border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(15)}" 
+						<@columnData tdstyle="color: #999;  border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(15)}" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Submit')}"/>
-						<@columnData tdstyle="background:#DBEEF4;  border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(25)}" 
+						<@columnData tdstyle="color: #999;  border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(25)}" 
 							divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Amount')}"/>
 					</tr>
 					<#list preapprovalunapproveditems as row>
-						<#if row_index = 0>
-        					<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
-        				<#else>
-        					<#assign styles_for_border = "" >
-        				</#if>
+						<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
         				<#if (row??) && (row?size > 3)>
         					<tr>
-        						<@columnData tdstyle="background:#EBEEF0;${styles_for_border}" 
+        						<@columnData tdstyle="background:${styles_for_border}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[0]}"/>
 								<@columnData tdstyle="${styles_for_border}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[1]}"/>
@@ -619,10 +603,10 @@ and not to break existing logic -->
 	<#if firmpaiditemsinfo?has_content && firmpaiditemsinfo?size=2 && firmpaiditemsinfo[0]?? && firmpaiditemsinfo[1]??>
 		<tr>
 			<td>
-				<table style="cellpadding=0 cellspacing=0 width=100% style=text-align:left; font-size:9pt; color:#404040; background:#FFFFFF;">
+				<table cellpadding=0 cellspacing=0 width=100% style="padding: 0 24px; text-align:left; font-size: 13px;; color:#404040; background:#FFFFFF;">
 					<@dataDIVRow />	
-					<@dataDIVRow divstyle="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left; max-width:596px;" data="${replaceWithConstant(firmpaiditemsinfo[0])}" />
-					<@dataDIVRow divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;" data="${replaceWithConstant(firmpaiditemsinfo[1])}" />
+					<@dataDIVRow divstyle="color:#31B4CB; font-size:21px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left; max-width:596px;" data="${replaceWithConstant(firmpaiditemsinfo[0])}" />
+					<@dataDIVRow divstyle="line-height: 24px; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;" data="${replaceWithConstant(firmpaiditemsinfo[1])}" />
 					<@dataDIVRow />			
 				</table>
 			</td>
@@ -646,44 +630,39 @@ and not to break existing logic -->
 	<#if listdata?has_content >
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size:14px; color:#404040; text-align:left; background:#FFFFFF;">
 					<tr>
 						<td colspan="${sub_names?size}">
-							<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${name}" />
+							<@divData style="line-height: 27px; color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${name}" />
 						</td>
 					</tr>
 					<tr>
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[0])}"
-							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[0])}px;" data="${sub_names[0]}"/>
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[1])}" 
-							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[1])}px;" data="${sub_names[1]}"/>
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[2])}" 
-							divstyle="text-align:center; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[2])}px;" data="${sub_names[2]}"/>
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[3])}" 
-							divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[3])}px;" data="${sub_names[3]}"/>
+						<@columnData tdstyle="color: #999999; border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[0])}"
+							divstyle="font-size: 12px; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[0])}px;" data="${sub_names[0]}"/>
+						<@columnData tdstyle="color: #999999; border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[1])}" 
+							divstyle="font-size: 12px; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[1])}px;" data="${sub_names[1]}"/>
+						<@columnData tdstyle="color: #999999; border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[2])}" 
+							divstyle="font-size: 12px; text-align:center; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[2])}px;" data="${sub_names[2]}"/>
+						<@columnData tdstyle="color: #999999; border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[3])}" 
+							divstyle="font-size: 12px; text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[3])}px;" data="${sub_names[3]}"/>
 						<#if (sub_names?size = 5)>
-							<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[4])}" 
-								divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[4])}px;" data="${sub_names[4]}"/>
+							<@columnData tdstyle="color: #999999; border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" width="${precentToPixelConverter(widths[4])}" 
+								divstyle="font-size: 12px; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold; max-width:${precentToPixelConverter(widths[4])}px;" data="${sub_names[4]}"/>
 						</#if>
 					</tr>
 					<#list listdata as row>
-						<#if row_index=0>
-							<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
-						<#else>
-							<#assign styles_for_border = "${BLANK}" >
-						</#if>
 						<#if (row??) && (row?size > 3)>
 							<tr>
-								<@columnData tdstyle="background:#EBEEF0; ${styles_for_border}" width="${precentToPixelConverter(widths[0])}" 
+								<@columnData tdstyle="padding: 5px 0;" width="${precentToPixelConverter(widths[0])}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:${precentToPixelConverter(widths[0])}px;" data="${row[0]}"/>
-								<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(widths[1])}" 
+								<@columnData tdstyle="padding: 5px 0;" width="${precentToPixelConverter(widths[1])}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:${precentToPixelConverter(widths[1])}px;" data="${row[1]}"/>
-								<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(widths[2])}" 
+								<@columnData tdstyle="padding: 5px 0;" width="${precentToPixelConverter(widths[2])}" 
 									divstyle="text-align:center; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:${precentToPixelConverter(widths[2])}px;" data="${row[2]}"/>
-								<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(widths[3])}" 
+								<@columnData tdstyle="padding: 5px 0;" width="${precentToPixelConverter(widths[3])}" 
 									divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:${precentToPixelConverter(widths[3])}px;" data="${row[3]}"/>
 								<#if (sub_names?size = 5)>
-									<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(widths[4])}" 
+									<@columnData tdstyle="padding: 5px 0;" width="${precentToPixelConverter(widths[4])}" 
 										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:${precentToPixelConverter(widths[4])}px;" data="${row[4]}"/>
 								</#if>
 							</tr>
@@ -754,33 +733,29 @@ and not to break existing logic -->
 	<#if listdata?has_content>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<tr>
 						<td colspan="5">
-							<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${replaceWithConstant('Assigned to:')}${listdata[0][0]}" />
+							<@divData style="color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" value="${replaceWithConstant('Assigned to:')}${listdata[0][0]}" />
 						</td>
 					</tr>
 					<tr>
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" 
+						<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Vendor')}" />
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" 
+						<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Invoice Number')}" />
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" 
+						<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Invoice Date')}" />
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" 
+						<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Amount')}" />
-						<@columnData tdstyle="background:#DBEEF4; border-top: 1pt solid #B4C1C6;" 
+						<@columnData tdstyle="color: #999; border-top: 1pt solid #B4C1C6;" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; font-weight:bold;" data="${replaceWithConstant('Assigned')}" />
 					</tr>
 					<#list listdata as row>
-						<#if row_index = 0>
-							<#assign styles_for_border= "border-top: 1pt solid #B4C1C6;">
-						<#else>
-							<#assign styles_for_border= "${BLANK}">
-						</#if>
+						<#assign styles_for_border= "border-top: 1pt solid #B4C1C6;">
 						<#if row?? && (row?size>5)>
 							<tr>
-								<@columnData tdstyle="background:#EBEEF0; ${styles_for_border}" 
+								<@columnData tdstyle="${styles_for_border}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[0]}" />
 								<@columnData tdstyle="${styles_for_border}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[2]}" />
@@ -818,40 +793,52 @@ and not to break existing logic -->
 		</#if>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:right; background:#FFFFFF;">
-					<tr>
-						<@columnData width="${precentToPixelConverter(25)}" 
-							divstyle="color:#0089B7; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:149px;" data="${name}" />
-						<@columnData width="${precentToPixelConverter(20)}" 
-							divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;" data="${label}" />
-						<td width="${precentToPixelConverter(55)}" valign='top'>
-							<br/>
-						</td>
-					</tr>
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px; color:#404040; text-align:right; background:#FFFFFF;">
+					<#assign firstItem = listdata[0]!DUMMY_ARRAY>
+					<#if firstItem?size=3>
+						<tr>
+							<@columnData width="${precentToPixelConverter(25)}"
+								divstyle="color:#475156; font-size:18px; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${name}" />
+							<@columnData width="${precentToPixelConverter(20)}" 
+								divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;" data="${label}" />
+							<td width="${precentToPixelConverter(55)}" valign='top'>
+								<br/>
+							</td>
+						</tr>
+					<#else>
+						<tr>
+							<@columnData width="${precentToPixelConverter(50)}"
+								divstyle="color:#475156; font-size:18px; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${name}" />
+							<@columnData width="${precentToPixelConverter(50)}" 
+								divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${label}" />
+						</tr>
+					</#if>
 					<#list listdata as row>
-						<#if row_index = 0>
-							<#assign styles_for_border= "border-top: 1pt solid #B4C1C6;">
-						<#else>
-							<#assign styles_for_border= "${BLANK}">
-						</#if>
+						<#assign styles_for_border= "border-top: 1pt solid #B4C1C6;">
 						<#if row?? && (row?size>1)>
 							<tr>
-								<@columnData tdstyle="background:#EBEEF0; max-width:149px;${styles_for_border};" width="${precentToPixelConverter(25)}" 
-									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant(row[0])}" />
-								<@columnData tdstyle="${styles_for_border};" width="${precentToPixelConverter(20)}" 
-									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px; max-width:119px;" data="${(row[1]?split(' '))[0]}" />
 								<#if row?size=3>
+									<@columnData tdstyle="text-align: left;${styles_for_border};" width="${precentToPixelConverter(25)}" 
+										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant(row[0])}" />
+									<@columnData tdstyle="${styles_for_border};" width="${precentToPixelConverter(20)}" 
+										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" data="${(row[1]?split(' '))[0]}" />
 									<@columnData tdstyle="${styles_for_border};" width="${precentToPixelConverter(55)}" 
 										divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:328px;" data="${row[2]}" />
 								<#else>
-									<@columnData tdstyle="${styles_for_border};" width="${precentToPixelConverter(55)}" 
-										divstyle="max-width:328px;" data="${HTML_SPACE}" />
+									<@columnData tdstyle="text-align: left;${styles_for_border};" width="${precentToPixelConverter(50)}" 
+										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant(row[0])}" />
+									<@columnData tdstyle="${styles_for_border};" width="${precentToPixelConverter(50)}" 
+										divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" data="${(row[1]?split(' '))[0]}" />
 								</#if>
 							</tr>
 						</#if>
 					</#list>
 					<tr>
-						<td colspan="3" style="border-top: 1pt solid #B4C1C6;">
+						<#if firstItem?size=3>
+							<td colspan="3" style="border-top: 1pt solid #B4C1C6;">
+						<#else>
+							<td colspan="2" style="border-top: 1pt solid #B4C1C6;">
+						</#if>
 							<@divData style="" value="${HTML_SPACE}" />
 						</td>
 					</tr>
@@ -869,21 +856,17 @@ and not to break existing logic -->
 	<#if listdata?has_content>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<tr>
 						<td colspan="4">
-							<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstant('Expense Transactions')}" />
+							<@divData style="color:#475156; font-size:18px; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstant('Expense Transactions')}" />
 						</td>
 					</tr>
 					<#list listdata as row>
-						<#if row_index = 0>
-							<#assign styles_for_border= "border-top: 1pt solid #B4C1C6;">
-						<#else>
-							<#assign styles_for_border= "${BLANK}">
-						</#if>
+						<#assign styles_for_border= "border-top: 1pt solid #B4C1C6;">
 						<#if row?? && (row?size>3)>
 							<tr>
-								<@columnData tdstyle="background:#EBEEF0; ${styles_for_border}" 
+								<@columnData tdstyle="${styles_for_border}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[0]}" />
 								<@columnData tdstyle="${styles_for_border}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[1]}" />
@@ -909,8 +892,8 @@ and not to break existing logic -->
 	<#if listdata?has_content>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:9pt; color:#404040; background:#FFFFFF;">
-					<@dataDIVRow tdstyle="" divstyle="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${name}"  />
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:left; font-size: 13px;; color:#404040; background:#FFFFFF;">
+					<@dataDIVRow tdstyle="" divstyle="color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${name}"  />
 					<#list listdata as row>
 						<#if row_index = 0>
 							<#assign styles_for_border= "border-top: 1pt solid #B4C1C6;">
@@ -934,10 +917,10 @@ and not to break existing logic -->
 	<#if listdata?has_content>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<tr>
 						<@columnData tdstyle="border-bottom: 1pt solid #B4C1C6;" 
-							divstyle="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" data="${replaceWithConstant('Guest Data')}" />
+							divstyle="color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left;" data="${replaceWithConstant('Guest Data')}" />
 						<@columnData tdstyle="border-bottom: 1pt solid #B4C1C6;" 
 							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${replaceWithConstant('Internal Guests')}" />
 						<@columnData tdstyle="border-bottom: 1pt solid #B4C1C6;" 
@@ -952,7 +935,7 @@ and not to break existing logic -->
 					<#list listdata as row>
 						<#if row?? && (row?size>5)>
 							<tr>
-								<@columnData tdstyle="background:#EBEEF0;" 
+								<@columnData tdstyle="background:" 
 									divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${replaceWithConstantForUDA(row[0])}" />
 								<@columnData tdstyle="" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${row[1]}" />
@@ -986,7 +969,7 @@ and not to break existing logic -->
 	<#if listdata?has_content>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:9pt; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:left; font-size: 13px;; color:#404040; background:#FFFFFF;">
 					<tr>
 						<#list listdata as row>
 							<#if row??>
@@ -1000,7 +983,7 @@ and not to break existing logic -->
 							</#if>
 						</#list>
 						<td colspan="${columnamount}">
-							<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${name}" />
+							<@divData style="color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${name}" />
 						</td>
 						<td colspan="1">
 							<@divData style="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstant('Amount')} (${expense.currency})" />
@@ -1067,10 +1050,10 @@ and not to break existing logic -->
 	<#if listdata?has_content>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; line-height: 30px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<tr>
 						<td colspan="3">
-							<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${name}" />
+							<@divData style="color:#475156; font-size:18px; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${name}" />
 						</td>
 					</tr>
 					<#list listdata as row>
@@ -1100,10 +1083,10 @@ and not to break existing logic -->
 	<#if data?? && (data?length>0)>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style=text-align:${grandTotalAlignment};font-size:9pt; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:${grandTotalAlignment};font-size: 13px;; color:#404040; background:#FFFFFF;">
 					<tr>
 						<td>
-							<span style="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${replaceWithConstant(grandTotalLabel)}</span>
+							<span style="color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${replaceWithConstant(grandTotalLabel)}</span>
 							<span style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${data}</span>
 						</td>
 					</tr>
@@ -1118,10 +1101,10 @@ and not to break existing logic -->
 	<#if data?? && (data?length>0)>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style=text-align:${totalReimbursementsAlignment};font-size:9pt; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:${totalReimbursementsAlignment};font-size: 13px;; color:#404040; background:#FFFFFF;">
 					<tr>
 						<td>
-							<span style="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${replaceWithConstant(totalReimbursementsLabel)}</span>
+							<span style="color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${replaceWithConstant(totalReimbursementsLabel)}</span>
 							<span style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${data}</span>
 						</td>
 					</tr>
@@ -1136,10 +1119,10 @@ and not to break existing logic -->
 	<#if data?? && (data?length>0)>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style=text-align:${totalCompanyPaidAlignment};font-size:9pt; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:${totalCompanyPaidAlignment};font-size: 13px;; color:#404040; background:#FFFFFF;">
 					<tr>
 						<td>
-							<span style="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${replaceWithConstant(totalCompanyPaidLabel)}</span>
+							<span style="color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${replaceWithConstant(totalCompanyPaidLabel)}</span>
 							<span style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:left">${data}</span>
 						</td>
 					</tr>
@@ -1155,10 +1138,10 @@ and not to break existing logic -->
 		<#local listdataSize=listdata?size>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<tr>
 						<td colspan="4">
-							<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstant('Expense Items')}" />
+							<@divData style="color:#475156; font-size:18px; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstant('Expense Items')}" />
 						</td>
 					</tr>
 					<#list listdata as row>
@@ -1214,18 +1197,18 @@ and not to break existing logic -->
 	<#if (total??) && (total?size = 2) && (total[0]??) && (total[1]??)>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size:18px; color:#404040; text-align:left; background:#FFFFFF;">
 					<tbody>
 						<tr>
 							<td>
-								<div style="color:#0089B7; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
+								<div style="color:#475156; font-size:12px; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
 									${replaceWithConstant(total[0])}
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<div style="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
+								<div style="color: #404040; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
 									${total[1]}
 								</div>
 							</td>
@@ -1247,7 +1230,7 @@ and not to break existing logic -->
 	<#if (instructionshsr??) && (instructionshsr?size > 0)>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:left; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; color:#404040; text-align:left; background:#FFFFFF;">
 					<tbody>
 						<tr>
 							<td style=" border-bottom: 1pt solid #B4C1C6;">
@@ -1281,39 +1264,35 @@ and not to break existing logic -->
 		<#assign i=0 >
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; text-align:left; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; font-weight:normal; line-height: 30px; text-align:left; color:#404040; background:#FFFFFF;">
     	        	<tbody>
         	    		<tr>
             				<td colspan="2">
-            					<div style=" color:#0089B7; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
+            					<div style=" color:#475156; font-size:18px; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
             						${replaceWithConstant('Item Details')}
             					</div>
             				</td>
             			</tr>
             			<#list itemdetails as data>
-            				<#if i=0> 
-	            				<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
-    	        			<#else>
-        	    				<#assign styles_for_border = "" >
-            				</#if>
+							<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
             				<#assign i=i+1 >
             				<#if (data??) && (data?size >1) >
             					<#if (data?size >0) >
             						<tr>
-            							<td class="tdcolumn" style="background:#EBEEF0; ${styles_for_border}" valign="top" width="${precentToPixelConverter(25)}">
-            								<div style=" margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:right; min-width:135px;">
+            							<td class="tdcolumn" style="${styles_for_border}" valign="top" width="${precentToPixelConverter(25)}">
+            								<div style=" margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;">
             									${replaceWithConstant(data[0])}
             								</div>
             							</td>
             							<#if data_index = 0>
 	            							<td style="${styles_for_border}" valign:"top" width="${precentToPixelConverter(75)}">
-		            							<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
+		            							<div style="margin-left:5px; margin-right:5px; text-align:right; font-family:tahoma,arial,sans-serif;">
 	    	        								${replaceWithConstantForItemType(data[1])}
 	        	    							</div>
 	            							</td>
             							<#else>
             								<td style="${styles_for_border}" valign:"top" width="${precentToPixelConverter(75)}">
-	            								<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
+	            								<div style="margin-left:5px; margin-right:5px; text-align:right; font-family:tahoma,arial,sans-serif;">
     	        									${data[1]}
         	    							</div>
             							</td>
@@ -1328,7 +1307,12 @@ and not to break existing logic -->
             						</tr>
             					</#if>
             				</#if>
-            			</#list>
+						</#list>
+						<tr>
+							<td style="border-top: 1pt solid #B4C1C6;" colspan="2">
+								<div>${HTML_SPACE}</div>
+							</td>
+						</tr>
             		</tbody>
 				</table>
 			</td>
@@ -1342,37 +1326,32 @@ and not to break existing logic -->
 		<#assign i=0 >
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; text-align:left; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="color: #475156; padding: 0 24px; font-size:12px; font-weight:normal; text-align:left; background:#FFFFFF;">
 					<tbody>
             			<tr>
-            				<td valign="top" colspan="2">
-            					<div style=" color:#C00000; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;  ">
+            				<td valign="top" colspan="2" style="background: #FCEEDB;">
+            					<div style="color:#EC971F; font-size:15px; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;  ">
             						${replaceWithConstant('Compliance Warning')}
             					</div>
             				</td>
             			</tr>
             			<#list compliancewarning as data>
-            				<#if i=0> 
-            					<#assign styles_for_border = "border-top: 1pt solid #B4C1C6;" >
-            				<#else>
-            					<#assign styles_for_border = "" >
-            				</#if>
             				<#assign i=i+1 >
             				<tr>
-            					<td style="background:#EBEEF0; ${styles_for_border}"  width="${precentToPixelConverter(25)}" valign="top">
-	            					<div style=" margin-left:5px; margin-right:5px; text-align:right; font-family:tahoma,arial,sans-serif; min-width:135px; max-width:149px;">
+            					<td style="background: #FCEEDB;"  width="${precentToPixelConverter(25)}" valign="top">
+	            					<div style="line-height: 25px; color: #9b9b9b; font-weight: bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;">
     	        						${replaceWithConstant(data[0])}
         	    					</div>
 	            				</td>
-    	        				<td style="${styles_for_border}" width="${precentToPixelConverter(75)}" valign="top">
-        	    					<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:447px;">
+    	        				<td style="background: #FCEEDB;" width="${precentToPixelConverter(75)}" valign="top">
+        	    					<div style="line-height: 25px; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:447px;">
             							${data[1]}
             						</div>
 	            				</td>
     	        			</tr>
         	    		</#list>
             			<tr>
-            				<td style="border-top: 1pt solid #B4C1C6;" valign="top", colspan="2">
+            				<td valign="top", colspan="2">
             					<div> ${HTML_SPACE} </div>
             				</td>
             			</tr>
@@ -1388,11 +1367,11 @@ and not to break existing logic -->
 		<#local j=0, k=0, n=0, p=0, l=0 >
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; text-align:left; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; font-weight:normal; text-align:left; color:#404040; background:#FFFFFF;">
 					<tbody>
             			<tr>
             				<td colspan="4">
-            					<div style=" color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
+            					<div style=" color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
             						${replaceWithConstant('Expense Details')}
             					</div>
             				</td>	
@@ -1410,11 +1389,7 @@ and not to break existing logic -->
             							<#break>
             						<#case 1>
             							<tr>
-            							<#if k=0 && n=0 && p=0 >
             								<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="4">
-            							<#else>
-            								<td valign="top" colspan="4">
-            							</#if>
             									<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;">
             										${data[0]}
             									</div>
@@ -1424,93 +1399,57 @@ and not to break existing logic -->
             							<#break>
             						<#case 2>
             							<tr>
-            								<#if l=0 >
-            									<td class="tdcolumn" style="background:#EBEEF0;border-top: 1pt solid #B4C1C6;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
-            								<#else>
-            									<td class="tdcolumn" style="background:#EBEEF0;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
-            								</#if>
-            									<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:right; max-width:119px;">
-            										${replaceWithConstant(data[0])}
-            									</div>
-            									</td>
-            								<#if l=0 >
-            									<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="3" width="${precentToPixelConverter(80)}">
-            								<#else>
-            									<td valign="top" colspan="1" width="${precentToPixelConverter(80)}">
-            								</#if>
-            										<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:477px;">
-            											${data[1]}
-            										</div>
-            									</td>
+											<td class="tdcolumn" style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
+												<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:right; max-width:119px;">
+													${replaceWithConstant(data[0])}
+												</div>
+											</td>
+											<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="3" width="${precentToPixelConverter(80)}">
+												<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:477px;">
+													${data[1]}
+												</div>
+											</td>
             							</tr>
             							<#local l=l+1 >
             							<#break>
             						<#case 3>
             							<tr>
-            								<#if p=0 && n=0 >
-            									<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
-	            							<#else>
-    	        								<td style="background:#EBEEF0;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
-        	    							</#if>
-            										<div style=" margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;">
-            											${replaceWithConstant(data[0])}
-            										</div>
-            									</td>
-            								<#if p=0 && n=0 >
-            									<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="1" width="${precentToPixelConverter(30)}">
-            								<#else>
-            									<td style="background:#EBEEF0;" valign="top" colspan="1" width="${precentToPixelConverter(30)}">
-            								</#if>
+											<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
+												<div style=" margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;">
+													${replaceWithConstant(data[0])}
+												</div>
+											</td>
+											<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="1" width="${precentToPixelConverter(30)}">
             									<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;max-width:179px;">
             										${data[1]}
             									</div>
             								</td>
-            								<#if p=0 && n=0 >
-            									<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="2" width="${precentToPixelConverter(50)}">
-            								<#else>
-            									<td style="background:#EBEEF0;" valign="top" colspan="2" width="${precentToPixelConverter(50)}">
-            								</#if>
-            										<div style=" margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:298px;">
-            											${data[2]}
-            										</div>
-            									</td>
+											<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="2" width="${precentToPixelConverter(50)}">
+												<div style=" margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:298px;">
+													${data[2]}
+												</div>
+											</td>
             							</tr>
             							<#local p=p+1 >
             							<#break>
             						<#case 4>
             							<tr>
-            								<#if n=0 >
-            									<td style="border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(20)}">
-            								<#else>
-            										<td style="background:#EBEEF0;" valign="top" width="${precentToPixelConverter(20)}">
-            								</#if>
+											<td style="border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(20)}">
             									<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;">
             										${data[0]}
             									</div>
             								</td>
-            								<#if n=0 >
-            									<td style="border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(30)}">
-            								<#else>
-        										<td style="background:#EBEEF0;" valign="top" width="${precentToPixelConverter(30)}">
-            								</#if>
+											<td style="border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(30)}">
             									<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;max-width:179px;">
             										${data[1]}
             									</div>
             								</td>
-            								<#if  n=0 >
-            									<td style="border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(30)}">
-            								<#else>
-            										<td style="background:#EBEEF0;" valign="top" width="${precentToPixelConverter(30)}">
-            								</#if>
+											<td style="border-top: 1pt solid #B4C1C6;" valign="top" width="${precentToPixelConverter(30)}">
             									<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;max-width:179px;">
             										${data[2]}
             									</div>
             								</td>
-            								<#if n=0 >
-            									<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
-            								<#else>
-            										<td style="background:#EBEEF0;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
-            								</#if>
+											<td style="border-top: 1pt solid #B4C1C6;" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
             									<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:right; min-width:90px; max-width:119px;">
             										${data[3]}
             									</div>
@@ -1521,31 +1460,31 @@ and not to break existing logic -->
             					<#case 5>
             						<tr>
             							<td colspan="4">
-            								<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; text-align:left; color:#404040; background:#FFFFFF;">
+            								<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; font-size: 13px;; font-weight:normal; text-align:left; color:#404040; background:#FFFFFF;">
 												<tbody>
 													<#if j=0>
 													<tr>
-														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;">
+														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;">
 															<div style=" text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
 																${replaceWithConstant('Internal Guests')}
 															</div>
 														</td>
-														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;">
+														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;">
 															<div style=" text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
 																${replaceWithConstant('External Guests')}
 															</div>
 														</td>
-														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;">
+														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;">
 															<div style=" text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
 																${replaceWithConstant('Guests')}
 															</div>
 														</td>
-														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;">
+														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;">
 															<div style=" text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
 																${replaceWithConstant('Total Cost')}
 															</div>
 														</td>
-														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;">
+														<td style=" border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;">
 															<div style=" text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; ">
 																${replaceWithConstant('Per Person')}
 															</div>
@@ -1606,29 +1545,21 @@ and not to break existing logic -->
 		<#local border_td= true >
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:9pt; color:#404040; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:left; font-size: 13px; color:#404040; background:#FFFFFF;">
 					<tr>
 						<td colspan="5">
-							<@divData style="color:#0089B7; font-size:10pt; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstant('Expense Details')}" />
+							<@divData style="color:#475156; font-size:18px; font-weight:bold; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="${replaceWithConstant('Expense Details')}" />
 						</td>
 					</tr>
 					<#list listdata as row>
-						<#if i = 0>
-							<#local styles_for_border= "border-top: 1pt solid #B4C1C6;">
-						<#else>
-							<#local styles_for_border= "${BLANK}">
-						</#if>
+						<#local styles_for_border= "border-top: 1pt solid #B4C1C6;">
 						<#local i = i + 1>
 						<#if row?? && (row?size>3)>
 							<#if row[0]?length = 0>
-								<#if border_td >
-									<#local style_td= "border-top: 1pt solid #B4C1C6;">
-									<#local border_td= false >
-								<#else>
-									<#local style_td= "">
-								</#if>
+								<#local style_td= "border-top: 1pt solid #B4C1C6;">
+								<#local border_td= false >
 								<tr>
-									<td class="tdcolumn" style="background:#EBEEF0;${styles_for_border}${style_td}" valign="top" colspan="1" width="${precentToPixelConverter(20)}/>">
+									<td class="tdcolumn" style="${styles_for_border}${style_td}" valign="top" colspan="1" width="${precentToPixelConverter(20)}/>">
 										<div style=" margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; text-align:right; max-width:119px;">
 											${row[1]}
 										</div>
@@ -1644,25 +1575,25 @@ and not to break existing logic -->
 								<#if row?length = 5>
 									<#if j = 0 >
 										<tr>
-											<td style ="border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;" >
+											<td style ="border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" >
 												<@divData style="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" value="Internal Guests" />
 											</td>
-											<td style = "border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;" >
+											<td style = "border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" >
 												<div style=" text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
 													External Guests
 												</div>
 											</td>
-											<td style = "border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;" >
+											<td style = "border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" >
 												<div style="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
 													Guests
 												</div>
 											</td>
-											<td style = "border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;" >
+											<td style = "border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" >
 												<div style="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
 													Total Cost
 												</div>
 											</td>
-											<td style = "border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6; background:#EBEEF0;" >
+											<td style = "border-bottom: 1pt solid #B4C1C6; border-top: 1pt solid #B4C1C6;" >
 												<div style="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;">
 													Per Person
 												</div>
@@ -1807,7 +1738,7 @@ and not to break existing logic -->
 	<#if args?? && (args?size > 1)>
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="text-align:left; font-size:9pt; color:#404040; background:#EBEEF0;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="padding: 0 24px; text-align:center; font-size: 13px; color:#404040;">
 					<tr>
 						<td valign="top">
 							<div style="font-family:tahoma,arial,sans-serif; max-width:36px; -webkit-text-size-adjust:none; margin-left:5px; margin-right:5px;">
@@ -1833,9 +1764,9 @@ and not to break existing logic -->
 								<@spanData value="${replaceWithConstant('instructions2')}"/><b>${replaceWithConstant('accept')}</b><@spanData value="${replaceWithConstant('or')}"/><b>${replaceWithConstant('return')}</b><@spanData value="${replaceWithConstant('instructions3')}"/>
 								<br/>
 								<@spanData value="- OR "/><b>${replaceWithConstant('forward')}</b><@spanData value="${replaceWithConstant('instructions4')}"/>
-								<u style="color:#0089B7; text-decoration:underline; font-family:tahoma,arial,sans-serif;  -webkit-text-size-adjust:none;">${args[0]}</u>
+								<u style="color:#475156; text-decoration:underline; font-family:tahoma,arial,sans-serif;  -webkit-text-size-adjust:none;">${args[0]}</u>
 								<@spanData value=" or "/>
-								<u style="color:#0089B7; text-decoration:underline; font-family:tahoma,arial,sans-serif;  -webkit-text-size-adjust:none;">${args[1]}</u>
+								<u style="color:#475156; text-decoration:underline; font-family:tahoma,arial,sans-serif;  -webkit-text-size-adjust:none;">${args[1]}</u>
 								<@spanData value="${replaceWithConstant('instructions5')}"/>
 								<br/>
 							</div>
@@ -1850,24 +1781,23 @@ and not to break existing logic -->
 <#macro writeInstructionsUrl Instructions_URL instructionsText>
 	<tr>
     	<td>
-        	<table cellpadding="0" cellspacing="0" width="100%" style="background:#FFFFFF; ">
-
+        	<table cellpadding="0" cellspacing="0" width="100%" style="color:#9FA4A6;">
 	            <#if Instructions_URL??>
 	                <tr>
 	                    <td colspan="2" height="12" />
 	                </tr>
-	                
 	                <tr>
-	                    <td style="padding-left:0;padding-right:5.4pt;" colspan="2" valign="top" >
-	                        <div style="margin-left:0;margin-right:0;important;font-family:tahoma,arial,sans-serif;text-align:left;color:#07323E;font-size:12px;font-weight:bold;">
+	                    <td style="padding-left:0;padding-right:5.4pt;text-align:center;" colspan="2" valign="top" >
+	                        <div style="margin-left:0;margin-right:0;font-family:tahoma,arial,sans-serif;font-size:12px;">
 	                            <#if instructionsText?? && instructionsText?has_content >
  									<@spanData value="${replaceWithConstantAllowingDots(instructionsText)}" />
  								<#else>
  									<@spanData value="${getMessageProperty(commonPrefix + keyPrefix + 'instructionsViewReportText_url')}" />
  								</#if>
- 	                            <a href="${getURLWithPrefix(Instructions_URL)}" style="color:#404040;  text-decoration:none; font-family:tahoma,arial,sans-serif; ">
-	                                <span style="color:#0089B7; text-decoration:underline; font-style:italic; -webkit-text-size-adjust:none;">
-	                                	<@spanData value="${getMessageProperty(commonPrefix + keyPrefix + 'click_here')}"/>	                                </span>
+ 	                            <a href="${getURLWithPrefix(Instructions_URL)}" style="∂text-decoration:none; font-family:tahoma,arial,sans-serif; ">
+	                                <span style="color:#58C4D7; text-decoration:underline; font-style:italic; -webkit-text-size-adjust:none;">
+	                                	<@spanData value="${getMessageProperty(commonPrefix + keyPrefix + 'click_here')}"/>
+									</span>
 	                            </a>
 	                            <div>
 									<br/>
@@ -1887,14 +1817,14 @@ and not to break existing logic -->
 			<#if row?? && (row?size<1)>
 				<tr>
 					<td valign="top" width="100%">
-						<@divData style="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;" value="${row[0]}" />						
+						<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;" value="${row[0]}" />						
 					</td>
 				</tr>
 			<#else>
 				<tr>
 					<td valign="top" width="100%">
-						<div style="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;">${replaceWithConstant(row[0])}
-							<u style="color:#0089B7; text-decoration:underline; font-family:tahoma,arial,sans-serif;">${row[1]}</u>
+						<div style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:596px;">${replaceWithConstant(row[0])}
+							<u style="color:#475156; text-decoration:underline; font-family:tahoma,arial,sans-serif;">${row[1]}</u>
 						</div>						
 					</td>
 				</tr>
@@ -1914,43 +1844,45 @@ and not to break existing logic -->
 		<#local styles_for_border="border-top: 1pt solid #B4C1C6;">
 		<tr>
 			<td>
-				<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; color:#404040; text-align:right; background:#FFFFFF;">
+				<table cellpadding="0" cellspacing="0" width="100%" style="line-height: 30px; padding: 0 24px; font-size: 13px;; color:#404040; text-align:right; background:#FFFFFF;">
 					<tr>
-						<@columnData width="${precentToPixelConverter(25)}" 
-							divstyle="color:#0089B7; font-size:10pt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:149px;" data="${name}"/>
-						<@columnData width="${precentToPixelConverter(75)}" 
+						<@columnData width="${precentToPixelConverter(50)}" 
+							divstyle="color:#475156; font-size:18pxt; font-weight:bold; text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:149px;" data="${name}"/>
+						<@columnData width="${precentToPixelConverter(50)}" 
 							divstyle="text-align:right; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif;" data="${BLANK}"/>
 					</tr>
 					<tr>
-						<@columnData tdstyle="${styles_for_border}background:#EBEEF0; max-width:149px;" width="${precentToPixelConverter(25)}" 
-							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant('EXPENSE')}"/>
-						<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(75)}" 
-							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px; text-align:left;" data="${replaceWithConstantForItemType(args[0])}"/>
+						<@columnData tdstyle="${styles_for_border}max-width:149px;" width="${precentToPixelConverter(35)}" 
+							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant('EXPENSE')}"/>
+						<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(65)}"
+							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" data="${replaceWithConstantForItemType(args[0])}"/>
 					</tr>
 					<tr>
-						<@columnData tdstyle="background:#EBEEF0; max-width:149px;" width="${precentToPixelConverter(25)}" 
-							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant('Date')}"/>
-						<@columnData width="${precentToPixelConverter(75)}" 
-							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px; text-align:left;" data="${args[1]}"/>
+						<@columnData tdstyle="${styles_for_border}max-width:149px;" width="${precentToPixelConverter(35)}" 
+							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant('Date')}"/>
+						<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(65)}"
+							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" data="${args[1]}"/>
 					</tr>
 					<tr>
-						<@columnData tdstyle="background:#EBEEF0; max-width:149px;" width="${precentToPixelConverter(25)}" 
-							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant('Amount')}"/>
-						<@columnData width="${precentToPixelConverter(75)}" 
-							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px; text-align:left;" data="${args[2]} ${args[3]}"/>
+						<@columnData tdstyle="${styles_for_border}max-width:149px;" width="${precentToPixelConverter(35)}" 
+							divstyle="text-align:left; margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant('Amount')}"/>
+						<@columnData tdstyle="${styles_for_border}" width="${precentToPixelConverter(65)}"
+							divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" data="${args[2]} ${args[3]}"/>
 					</tr>
 					<#local notes=args[4]>
 					<#list notes as note>
 						<tr>
 							<#if note_index = 0>
-								<@columnData tdstyle="background:#EBEEF0; max-width:149px;" width="${precentToPixelConverter(25)}" 
+								<@columnData tdstyle="${styles_for_border} max-width:149px; text-align: left;" width="${precentToPixelConverter(25)}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${replaceWithConstant('Notes')}"/>
+							<@columnData tdstyle="${styles_for_border} margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" width="${precentToPixelConverter(75)}" 
+								divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" data="${note}"/>
 							<#else>
-								<@columnData tdstyle="background:#EBEEF0; max-width:149px;" width="${precentToPixelConverter(25)}" 
+								<@columnData tdstyle="max-width:149px;" width="${precentToPixelConverter(25)}" 
 									divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:135px;" data="${BLANK}"/>
+							<@columnData tdstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" width="${precentToPixelConverter(75)}" 
+								divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px;" data="${note}"/>
 							</#if>
-							<@columnData tdstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px; text-align:left;" width="${precentToPixelConverter(75)}" 
-								divstyle="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; min-width:90px; text-align:left;" data="${note}"/>
 						</tr>
 					</#list>
 					<tr>

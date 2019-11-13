@@ -31,8 +31,8 @@
 				<!--#tdcol{width: 149px;}-->
 		</style>
 	</head>
-	<body background='#EBEEF0;'>
-		<table cellpadding='0' cellspacing='0' width='100%' style='background:#EBEEF0;'>
+	<body background='#475156;'>
+		<table cellpadding='0' cellspacing='0' width='100%' style='background:#475156;'>
 			<tr>
 				<td>
 					<table id='maintable' cellpadding='0' cellspacing='0' align='center' style='border-collapse: collapse; font-family:tahoma,arial,sans-serif; color:#404040; max-width:600px;'>
@@ -41,7 +41,7 @@
 						<tr>
 							<td>
 								<#-- Header with report id START -->
-								<table cellpadding='0' cellspacing='0' width='100%' style='background:#EBEEF0; font-size:9pt; font-weight:normal; color:#404040;'>
+								<table cellpadding='0' cellspacing='0' width='100%' style='background:#475156; font-size:9pt; font-weight:normal; color:#9FA4AC; padding: 10px 0;'>
 									<#if expense.hasReportIdInHeader!false >
 										<@writeID label="${replaceWithConstant('Report ID')}" value="${expense.reportId!BLANK}" />
 									</#if>
@@ -52,7 +52,7 @@
 								<#-- Header with report id END -->
 								
 								<#-- Report Container with Border START -->
-								<table cellpadding='0' cellspacing='0' align='center' width='100%' style=' background:#FFFFFF; border-collapse: collapse; border: 2pt solid #B4C1C6;'>
+								<table cellpadding='0' cellspacing='0' align='center' width='100%' style=' background:#FFFFFF; border-collapse: collapse; border: 0px solid;  border-radius: 5px 5px 0 0;'>
 									<@writeHeader value=expense.header!DUMMY_ARRAY />
 									<#-- HeaderNotes Information -->
 									<@writeHeaderEmailRow headerNotes=expense.headerNotes!DUMMY_ARRAY />
@@ -176,7 +176,7 @@
 								<#-- Report Container with Border END -->
 								
 								<#-- Footer START -->
-								<table cellpadding='0' cellspacing='0' width='100%' style='background:#EBEEF0; font-size:9pt; font-weight:normal; color:#404040;'>
+								<table cellpadding='0' cellspacing='0' width='100%' style='font-size:9pt; font-weight:normal; color:#9FA4A6;'>
 									<#if expense.hasReportId!false >
 										<@writeID label="${replaceWithConstant('Report ID')}" value="${expense.reportId!BLANK}" />
 									</#if>

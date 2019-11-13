@@ -182,7 +182,6 @@
               ]
             ],
             "paCurrency": "AUD",
-            "notes": [["Notes", "This is the first set of notes"]],
             "combinedemailrows": [["lol@goaway.bye", "HR", "additionalEmails"]],
             "emailVersionUID": "9A013C15-E495-6D3D-145C-9B78494847F7",
             "reportnotes109": [],
@@ -190,7 +189,22 @@
             "addtlnotes": [],
             "expensedetails": [],
             "expensedetails_": [],
-            "reportnotes": [],
+            "expenseLineItemsReturned": [
+                [
+                  "Parking",
+                  "14/03/2018",
+                  "12.00",
+                  "USD",
+                  ["test", "test"]
+                ]
+            ],
+            "reportnotes": [
+              [
+                "14/03/2018",
+                "The Approver3",
+                "return"
+              ]
+            ],
             "reportnoteskirkland": [],
             "itemnotes": [],
             "itemnoteskirkland": [],
@@ -210,20 +224,68 @@
             "ncmattersummary": [],
             "tcancexpensesummary": [],
             "grandtotal": "23.00 AUD",
-            "itemdetails": [],
+            "itemdetails": [
+              [
+                "Expense",
+                "Parking"
+              ],
+              [
+                "Date",
+                "14/03/2018"
+              ],
+              [
+                "Amount",
+                "12.00"
+              ],
+              [
+                "Notes",
+                "Some Notes Here"
+              ]
+            ],
             "unsubmittedreports": [],
             "unusedtransactions": [],
             "unusedfirmpaidreminderdays30": [],
-            "unusedfirmpaidreminderdays31_60": [],
+            "unusedfirmpaidreminderdays31_60": [
+              [
+                "Lalka Andrew",
+                "none",
+                "(01/09/18)",
+                "10,452.29"
+              ],
+              [
+                "Lalka Andrew",
+                "none",
+                "(01/09/18)",
+                "10,452.29"
+              ],
+              [
+                "Lalka Andrew",
+                "none",
+                "(01/09/18)",
+                "10,452.29"
+              ],
+              [
+                "Lalka Andrew",
+                "none",
+                "(01/09/18)",
+                "10,452.29"
+              ],
+              [
+                "Lalka Andrew",
+                "none",
+                "(01/09/18)",
+                "10,452.29"
+              ]
+            ],
             "unusedfirmpaidreminderdays61_90": [],
             "unusedfirmpaidreminderdays90Plus": [],
             "total": [
-              "Total",
-              "23.00 USD"
+              "Total Unused Firm Paid Items",
+              "92,570.32 CAD"
             ],
             "unusedrirmpaiditemsinfo": [
-              "Unused firm paid",
-              "amount maybe?"
+              "Unused Firm Paid Items",
+              "The following firm-paid expense items are currently unsubmitted"
             ],
             "unapproveditemsreminder": [],
             "preapprovalunapproveditems": [],
@@ -485,7 +547,7 @@
             "tablewidth": "100%",
             "hasReportId": true,
             "hasReportIdInHeader": true,
-            "hasPreApprovalIdInHeader": true,
+            "hasPreApprovalIdInHeader": false,
             "routingDescriptions": [],
             "suppressEFTCheckNumber": false,
             "paymentDateToPaidExpenses": [],
