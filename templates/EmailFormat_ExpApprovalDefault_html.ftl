@@ -16,11 +16,11 @@
 <#assign udfTypePrefix = 'udf.'>
 
 <#if model.data.useNewCSS >
-	<#include "templates/EmailFormat_ExpApprovalDefault_functions.ftl">
+	<#include "templates/EmailFormat_New_ExpApprovalDefault_html.ftl">
 	<#assign bgColor = '#475156'>
 <#else>
 	<#include "templates/EmailFormat_ExpApprovalDefault_functions.ftl">
-	<#assign bgColor = '#4EBEF0'>
+	<#assign bgColor = '#EBEEF0'>
 </#if>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
