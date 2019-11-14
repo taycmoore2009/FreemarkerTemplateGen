@@ -2,7 +2,7 @@
 <#assign HTML_SPACE = "&nbsp;" >
 <#assign BLANK = "" >
 <#assign DUMMY_ARRAY = [] >
-<#assign table_width = 596 >
+<#assign table_width = 550 >
 <#assign header = true >
 <#assign hasline = false >
 <#assign accountsummary4items = [15, 30, 35, 20]>
@@ -15,7 +15,13 @@
 <#assign udaTypePrefix = 'uda.'>
 <#assign udfTypePrefix = 'udf.'>
 
-<#include "templates/EmailFormat_Expense_functions.ftl">
+<#if model.data.useNewCSS!false >
+	<#include "templates/EmailFormat_New_Expense_functions.ftl">
+	<#assign bgColor = '#475156'>
+<#else>
+	<#include "templates/EmailFormat_Expense_functions.ftl">
+	<#assign bgColor = '#EBEEF0'>
+</#if>
 
 <html>
 	<head>
@@ -31,8 +37,8 @@
 				<!--#tdcol{width: 149px;}-->
 		</style>
 	</head>
-	<body background='#475156;'>
-		<table cellpadding='0' cellspacing='0' width='100%' style='background:#475156;'>
+	<body background='${bgColor};'>
+		<table cellpadding='0' cellspacing='0' width='100%' style='background:${bgColor};'>
 			<tr>
 				<td>
 					<table id='maintable' cellpadding='0' cellspacing='0' align='center' style='border-collapse: collapse; font-family:tahoma,arial,sans-serif; color:#404040; max-width:600px;'>
@@ -41,7 +47,7 @@
 						<tr>
 							<td>
 								<#-- Header with report id START -->
-								<table cellpadding='0' cellspacing='0' width='100%' style='background:#475156; font-size:9pt; font-weight:normal; color:#9FA4AC; padding: 10px 0;'>
+								<table cellpadding='0' cellspacing='0' width='100%' style='background:${bgColor}; font-size:9pt; font-weight:normal; <#if model.data.useNewCSS!false >color:#9FA4AC; padding: 10px 0;<#else>color:#404040;</#if>'>
 									<#if expense.hasReportIdInHeader!false >
 										<@writeID label="${replaceWithConstant('Report ID')}" value="${expense.reportId!BLANK}" />
 									</#if>
@@ -52,7 +58,7 @@
 								<#-- Header with report id END -->
 								
 								<#-- Report Container with Border START -->
-								<table cellpadding='0' cellspacing='0' align='center' width='100%' style=' background:#FFFFFF; border-collapse: collapse; border: 0px solid;  border-radius: 5px 5px 0 0;'>
+								<table cellpadding='0' cellspacing='0' align='center' width='100%' style=' background:#FFFFFF; border-collapse: collapse; <#if model.data.useNewCSS!false> border: 0px solid;  border-radius: 5px 5px 0 0;<#else>border: 2pt solid #B4C1C6</#if>'>
 									<@writeHeader value=expense.header!DUMMY_ARRAY />
 									<#-- HeaderNotes Information -->
 									<@writeHeaderEmailRow headerNotes=expense.headerNotes!DUMMY_ARRAY />
@@ -176,7 +182,7 @@
 								<#-- Report Container with Border END -->
 								
 								<#-- Footer START -->
-								<table cellpadding='0' cellspacing='0' width='100%' style='font-size:9pt; font-weight:normal; color:#9FA4A6;'>
+								<table cellpadding='0' cellspacing='0' width='100%' style='font-size:9pt; font-weight:normal; <#if model.data.useNewCSS!false >color:#9FA4A6;<#else>background:#EBEEF0; color:#404040;</#if>'>
 									<#if expense.hasReportId!false >
 										<@writeID label="${replaceWithConstant('Report ID')}" value="${expense.reportId!BLANK}" />
 									</#if>

@@ -1,6 +1,7 @@
 {
    "model": {
       "data": {
+         "useNewCSS": true,
          "emailData": {
             "list_labels": [
               "Subject1",
