@@ -30,7 +30,7 @@
 	<style type='text/css'>#maintable {width:600px;}@media screen and (max-width: 660px){#maintable{width:100%; max-width:600px;}<!--.tdcolumn{width: 149px;}--><!--#tdcol{width: 149px;}-->
 	</style>
 	
-	<body style="background:${bgColor};">
+	<body>
 		<table cellpadding="0" cellspacing="0" width="100%" style="background:${bgColor};">
 			<tr>
 				<td>
@@ -63,12 +63,20 @@
 									<#assign hasline=false>
 									<#if expense.instructionTop??>
 										<#assign topinfo=true>
-										<@writeInstruction value=expense.instructionTop!BLANK Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK IsWatcherNotification=expense.isWatcherNotification!false />
+										<#if model.data.customizeDeepLinkText>
+											<@writeInstructionCustomizeDeepLinkText value=expense.instructionTop!BLANK Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK IsWatcherNotification=expense.isWatcherNotification!false />
+										<#else>
+											<@writeInstruction value=expense.instructionTop!BLANK Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK IsWatcherNotification=expense.isWatcherNotification!false />
+										</#if>
 										<#assign topinfo=false>
 										<#assign hasline=true>
 									<#elseif expense.infourls?? && expense.infourls?has_content>
 										<#assign topinfo=true>
-										<@writeDefaultinstruction args=expense.infourls!DUMMY_ARRAY Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK />
+										<#if model.data.customizeDeepLinkText>
+											<@writeDefaultinstructionCustomizeDeepLinkText args=expense.infourls!DUMMY_ARRAY Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK />
+										<#else>
+											<@writeDefaultinstruction args=expense.infourls!DUMMY_ARRAY Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK />
+										</#if>
 										<#assign topinfo=false>
 										<#assign hasline=true>
 									</#if>
@@ -83,6 +91,17 @@
 											<@writeButton button=expense.buttontop!DUMMY_ARRAY />
 										</#if>
 										<@writeBottompage />
+										<#if model.data.useNewCSS>
+											<tr>
+												<td>
+													<table cellpadding="0" cellspacing="0" width="92%" style="margin: 0 4% 5px;">
+														<tr>
+															<td style="border-bottom: 1px solid #E7E9EA"></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</#if>
 									</#if>
 									
 									<#-- iteration by sections -->
@@ -156,7 +175,7 @@
 								</table>
 								<#-- END Report Container with Border -->
 								<#-- Footer -->
-								<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; <#if model.data.useNewCSS >color:#9FA4A6;<#else>background:#EBEEF0; color:404040;</#if>">
+								<table cellpadding="0" cellspacing="0" width="100%" style="font-size:9pt; font-weight:normal; <#if model.data.useNewCSS >color:#9FA4A6;<#else>background:#EBEEF0; color:#404040;</#if>">
 									<#-- This will visualize both the receiptLink and the report ID -->
 									<#if expense.receiptLink?? && expense.hasReportId!false >
 										<@writeReceiptLink link=expense.receiptLink!BLANK reportIdLabel="${replaceWithConstant('Report ID')}" reportId="${expense.reportId!BLANK}" footer=true />
@@ -169,15 +188,27 @@
 										<@writeID label="${replaceWithConstant('Pre-Approval ID')}" value="${expense.reportId!BLANK}" footer=true/> 
 									</#if>
 									
+									<tr><td>Test</td></tr>
 									<#if expense.instructionBottom??>
 										<#assign topinfo = false>
 										<#assign hasline = false>
 										<@writeBottompage />
 										<#assign hasline = false>
-										<@writeInstruction value=expense.instructionBottom!BLANK Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK IsWatcherNotification=expense.isWatcherNotification!false />
+										<#if model.data.customizeDeepLinkText>
+											<@writeInstructionCustomizeDeepLinkText value=expense.instructionBottom!BLANK Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK IsWatcherNotification=expense.isWatcherNotification!false />
+										<#else>
+											<@writeInstruction value=expense.instructionBottom!BLANK Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK IsWatcherNotification=expense.isWatcherNotification!false />
+										</#if>
 									<#elseif expense.infourlsinbottom?has_content>
 										<#assign topinfo = false>
-										<@writeDefaultinstruction args=expense.infourlsinbottom!DUMMY_ARRAY Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK />
+									<tr><td>Test</td></tr>
+										<#if model.data.customizeDeepLinkText>
+									<tr><td>Test1</td></tr>
+											<@writeDefaultinstructionCustomizeDeepLinkText args=expense.infourlsinbottom!DUMMY_ARRAY Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK />
+										<#else>
+									<tr><td>Test2</td></tr>
+											<@writeDefaultinstruction args=expense.infourlsinbottom!DUMMY_ARRAY Instructions_URL=expense.instructionsURL!BLANK InstructionsViewReportText_URL=expense.instructionsViewReportTextURL!BLANK />
+										</#if>
 										<#assign topinfo = true>
 									</#if>
 									<tr>

@@ -1,16 +1,19 @@
 {
    "model": {
      "data": {
-         "useNewCSS": true,
+       "customizeDeepLinkText": true,
+       "useNewCSS": false,
        "emailData": {
-         "list_labels": ["Subject1", "Header", "Compliance", "Business_Purpose", "Account_Summary", "Expense_Summary", "Guest_Details", "Financial_Summary", "Buttons_Bottom", "Instructions_Bottom"],
+         "list_labels": ["Subject1", "Header", "Compliance", "Business_Purpose", "Account_Summary", "Expense_Details", "Financial_Summary", "Buttons_Bottom", "Instructions_Bottom"],
          "header": ["ACTION REQUIRED", "Chrome River"],
          "expenserowdata": [
-            ["Expense Report for", "Chrome River Green Eggs & Ham"],
-            ["Report Name", "Expenses on 07/11/2019 03:48 PM"],
+            ["Expense Report for", "Tracey Davies"],
+            ["Created By", "Marielem Mayorga"],
+            ["Report Name", "Rule105100"],
             ["Submit Date", "07/11/2019"],
             ["Expense Dates", "07/11/2019 - 07/11/2019"],
-            ["Total Expenses", "15,00 USD"]
+            ["Total Expenses", "1,910.00 USD"],
+            ["Prior Approvers", "Marielem Mayorga [12/03/2019 GMT]"]
          ],
          "inforow": "",
          "compliancewarning": [
@@ -18,25 +21,31 @@
             ["Response", "test"]
          ],
          "expenseReportNotes": [],
-         "businesspurpose": ["testest"],
+         "businesspurpose": [],
          "reasonforassignment": [],
          "businesspurpose104": [],
          "accountsummary": [
-            ["99999", "GROUP ROUTING", "GROUP ROUTING", "15,00"]
+            ["GDCFIRM1201.803", "Practice Group", "business development", "1,910.00"],
+            ["", "Tax","",""]
          ],
          "allocation": [],
          "accountsummary84": [],
          "currency": "USD",
          "expensesummary": [
-            ["Taxi", "15,00 USD"]
+            ["Travel Meals", "23.00"]
          ],
-         "udadatadetail": [],
+         "udadatadetail": [
+            ["External", "Steve Irwin", "Australia Zoo", "1", "12.00", "12.00"],
+            ["Interal", "Michael Scott", "Dunder Mifflin", "1", "11.00", "1"]
+         ],
          "financialsummary": [
-            ["Total Expense Report", "15,00 USD"],
+            ["Total Expense Report", "1,910.00 USD"],
             ["Less Company Paid", "0.00 USD"],
-            ["Amount Due Employee", "15,00 USD"]
+            ["Amount Due Employee", "1,910.00 USD"]
          ],
-         "preapprovalsummary": [],
+         "preapprovalsummary": [
+            ["Meals", "25.00", "23.00"]
+         ],
          "paCurrency": "",
          "notes": [],
          "combinedemailrows": [],
@@ -44,14 +53,20 @@
          "reportnotes109": [],
          "itemnotes109": [],
          "addtlnotes": [],
-         "expensedetails": [],
+         "expensedetails": [
+
+         ],
          "expensedetails_": [],
          "reportnotes": [],
          "reportnoteskirkland": [],
          "itemnotes": [],
          "itemnoteskirkland": [],
-         "internalguests": [],
-         "externalguests": [],
+         "internalguests": [
+            ["Michael Scott", "DunderMifflin", 1, "11.00", "1.00"]
+         ],
+         "externalguests": [
+            ["Steve Irwin", "Australia Zoo", 1, "12.00", "12.00"]
+         ],
          "description": [],
          "expensetransactions": [],
          "instructions": [],
@@ -80,16 +95,339 @@
          "isWatcherNotification": false,
          "inforows": [],
          "inforowswhichcontainsemails": [],
-         "infourls": "",
+         "infourls": ["test", "test"],
          "infourlsinbottom": ["approve@dev-expense.us1.chromeriver.com", "return@dev-expense.us1.chromeriver.com"],
          "instructionTop": "",
-         "receiptLink": "",
+         "receiptLink": "test",
          "allReceiptsLink": "",
          "subject": ["email_expense_approval_subject", "Chrome River Green Eggs & Ham"],
-         "lineItemImagesPageIndexeURLs": [],
+         "lineItemImagesPageIndexeURLs": ["test", "", "test"],
          "reportId": "DEV0-2870-2384",
          "attorneyBudget": [],
-         "expensedetailsItems": [],
+         "expensedetailsItems": [  
+            [  
+               [  
+                  "07/25/2019",
+                  "Taxi/Car Service",
+                  "Affinity Group Expense",
+                  "90.00 USD"
+               ],
+               [  
+                  "",
+                  "GDCFIRM1201.803",
+                  "Diversity"
+               ],
+               [  
+                  "",
+                  "Tax",
+                  ""
+               ],
+               [  
+                  "Business Purpose",
+                  "Test Test Test"
+               ],
+               [  
+                  "Locaiton",
+                  "Test"
+               ],
+               [  
+                  "Event",
+                  "(Other)"
+               ],
+               [  
+                  "Venue",
+                  "Test"
+               ],
+               [  
+                  "Diversity",
+                  "1"
+               ],
+               [  
+                  "# Attendees",
+                  "1.00"
+               ],
+               [  
+                  "Cost Code",
+                  "6616"
+               ],
+               [  
+                  "Reasone Assigned",
+                  "Expense Owner Review (expense sumbitted on his/her behalf)"
+               ]
+            ],
+            [  
+               [  
+                  "07/25/2019",
+                  "Hotel",
+                  "Support Other Organizations",
+                  "30.00 USD"
+               ],
+               [  
+                  "",
+                  "GDCFIRM1201.803",
+                  "Diversity"
+               ],
+               [  
+                  "Business Purpose",
+                  "Test Test Test"
+               ],
+               [
+                  "Check In",
+                  "07/25/2019"
+               ],
+               [
+                  "Check Out",
+                  "07/28/2019"
+               ],
+               [
+                  "Hotel Name",
+                  "Test"
+               ],
+               [  
+                  "Locaiton",
+                  "Washington, DC, USA"
+               ],
+               [
+                  "Guest Name",
+                  "Test"
+               ],
+               [  
+                  "Cost Code",
+                  "6616"
+               ],
+               [
+                  "a",
+                  "1000-0001",
+                  "Colt Telecom",
+                  "00CC101 - 15.00%",
+                  "\n15.00",
+                  "5.00 USD"
+               ]
+            ],
+            [  
+               [
+                  "child", 
+                  "07/25/2019",
+                  "Hotel - Meals",
+                  "Affinity Group Expense",
+                  "200.00 USD"
+               ],
+               [
+                  "child",
+                  "",
+                  "GDCFIRM1201.803",
+                  "Diversity"
+               ],
+               [  
+                  "child",
+                  "Business Purpose",
+                  "Test Test Test"
+               ],
+               [
+                  "child",
+                  "Hotel Name",
+                  "Test"
+               ],
+               [  
+                  "child",
+                  "Locaiton",
+                  "Washington, DC, USA"
+               ],
+               [
+                  "child",
+                  "Guest Name",
+                  "Test"
+               ],
+               [
+                  "child",
+                  "People",
+                  "1"
+               ],
+               [
+                  "child",
+                  "Diversity",
+                  "1"
+               ],
+               [  
+                  "child",
+                  "Event",
+                  "(Other)"
+               ],
+               [  
+                  "child",
+                  "Merchant",
+                  ""
+               ],
+               [  
+                  "child",
+                  "Cost Code",
+                  "6210"
+               ],
+               [  
+                  "child",
+                  "Reasone Assigned",
+                  "Expense Owner Review (expense sumbitted on his/her behalf)"
+               ],
+               [
+                  "child",
+                  "Tracey Davies",
+                  "Gibson, dunn & Crutcher LLP",
+                  "1",
+                  "200.00",
+                  "200.00 USD"
+               ],
+               [
+                  "child",
+                  "John Smith",
+                  "ABC Company",
+                  "",
+                  "",
+                  ""
+               ],
+               [
+                  "child",
+                  "John Smithsef sef sef se",
+                  "ABC Company sfeesfesfse sf esf sef esfse se fse fse",
+                  "",
+                  "",
+                  ""
+               ],
+               [
+                  "child",
+                  "John Smith",
+                  "ABC Company",
+                  "",
+                  "",
+                  ""
+               ],
+               [
+                  "child",
+                  "John Smith",
+                  "ABC Company",
+                  "",
+                  "",
+                  ""
+               ]
+            ],
+            [  
+               [  
+                  "child",
+                  "07/25/2019",
+                  "Lodging",
+                  "Affinity Group Expense",
+                  "1,600.00 USD"
+               ],
+               [  
+                  "child",
+                  "",
+                  "GDCFIRM1201.83",
+                  "Diversity"
+               ],
+               [  
+                  "child",
+                  "Business Purpose",
+                  "Test Test Test"
+               ],
+               [
+                  "child",
+                  "Check In",
+                  "12/01/2019"
+               ],
+               [
+                  "child",
+                  "Check Out",
+                  "12/03/2019"
+               ],
+               [
+                  "child",
+                  "Hotel Name",
+                  "Test"
+               ],
+               [  
+                  "child",
+                  "Locaiton",
+                  "Washington, DC, USA"
+               ],
+               [
+                  "child",
+                  "Guest Name",
+                  "Test"
+               ],
+               [  
+                  "child",
+                  "Event",
+                  "(Other)"
+               ],
+               [  
+                  "child",
+                  "Diversity",
+                  "1"
+               ],
+               [  
+                  "child",
+                  "# Attendees",
+                  "1.00"
+               ],
+               [  
+                  "child",
+                  "Cost Code",
+                  "6310"
+               ],
+               [  
+                  "child",
+                  "Reasone Assigned",
+                  "Expense Owner Review (expense sumbitted on his/her behalf)"
+               ]
+            ],
+            [  
+               [  
+                  "07/26/2019",
+                  "Lunch",
+                  "Affinity Group Expense",
+                  "20.00 USD"
+               ],
+               [  
+                  "",
+                  "GDCFIRM1201.83",
+                  "Diversity"
+               ],
+               [  
+                  "Business Purpose",
+                  "Test Test Test"
+               ],
+               [  
+                  "Locaiton",
+                  "Test"
+               ],
+               [  
+                  "Event",
+                  "(Other)"
+               ],
+               [
+                  "People",
+                  "1"
+               ],
+               [  
+                  "Diversity",
+                  "1"
+               ],
+               [  
+                  "Cost Code",
+                  "6210"
+               ],
+               [  
+                  "Reasone Assigned",
+                  "Expense Owner Review (expense sumbitted on his/her behalf)"
+               ],
+               [
+                  "Tracey Davies",
+                  "Gibson, dunn & Crutcher LLP",
+                  "1",
+                  "20.00",
+                  "20.00 USD"
+               ]
+            ]
+         ],
          "complianceWarningItems": [],
          "notesItems": [],
          "pacnotes": [],
@@ -98,7 +436,7 @@
          "unapprovedInvoicesReminder": [],
          "button": ["approve@dev-expense.us1.chromeriver.com", "return@dev-expense.us1.chromeriver.com"],
          "pabutton": "",
-         "buttontop": "",
+         "buttontop": ["approve@dev-expense.us1.chromeriver.com", "return@dev-expense.us1.chromeriver.com"],
          "pagemaxwidth": "560px;",
          "pageminwidth": "480px;",
          "tablewidth": "100%",
