@@ -7,16 +7,17 @@ const fs = require('fs');
 const getCompletedTemplate = function(templateToParse){
     var javaFunction = templateToParse.match(/<#function getMessageProperty([\s\S]*?)#function>/gi);
     templateToParse = templateToParse.replace(javaFunction, '');
-    fs.writeFileSync('completedFile.ftl', templateToParse);
+    fs.writeFileSync('outputs/completedFile.ftl', templateToParse);
 }
 /**
  * Add this to additionalFileFunctions to generate file for debuggin
  * @param {String} template
  */
 const generateDebugTemplate = function(file){
-    fs.writeFileSync('debugTemplate.ftl', file);
+    fs.writeFileSync('outputs/debugTemplate.ftl', file);
 }
 
+const params = process.argv.slice(2);
 /**
  * @param {JSON} model // JSON opbject that's supplied to freemarker template
  * @param {String} file // File with freemarker template. Can use include to attach multiple templates together
@@ -24,9 +25,10 @@ const generateDebugTemplate = function(file){
  *                                           If the function returns a string, the string returned will become the template
  */
 var options = {
-    model: JSON.parse(fs.readFileSync('model.json', 'utf8')),
-    file: 'templates/EmailFormat_ExpApprovalDefault_html.ftl',
-    messages: 'en',
+    file: params[0] || 'templates/defaultEmailTemplate.ftl',
+    model: JSON.parse(fs.readFileSync(params[1] || 'models/defaultModel.json', 'utf8')),
+    messages: params[2] || 'en',
+    outputs: params[3] || 'outputs/emailOutput.html',
     additionalFileFunctions: [generateDebugTemplate]
 }
 
