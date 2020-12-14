@@ -14,14 +14,9 @@
 <#assign itemTypePrefix = 'itemtype.'>
 <#assign udaTypePrefix = 'uda.'>
 <#assign udfTypePrefix = 'udf.'>
+<#assign bgColor = '#475156'>
 
-<#if model.data.useNewCSS >
-	<#include "templates/EmailFormat_New_ExpApprovalDefault_html.ftl">
-	<#assign bgColor = '#475156'>
-<#else>
-	<#include "templates/EmailFormat_ExpApprovalDefault_functions.ftl">
-	<#assign bgColor = '#EBEEF0'>
-</#if>
+<#include "templates/defaultEmailFunctions.ftl">
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

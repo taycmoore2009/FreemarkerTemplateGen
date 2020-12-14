@@ -130,6 +130,6 @@ module.exports = function(options){
     if (err) {
       throw new Error(err);
     }
-    fs.writeFileSync("emailOutput.html", result);
+    fs.writeFileSync(options.outputs, result);
   });
 }

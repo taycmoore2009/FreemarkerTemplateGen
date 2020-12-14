@@ -1,0 +1,25 @@
+{
+  "name": "freemarker_generator",
+  "version": "1.0.0",
+  "description": "Take FTL files with a model to generate html files",
+  "main": "index.js",
+  "dependencies": {
+    "freemarker": "^1.4.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taycmoore2009/FreemarkerTemplateGen.git"
+  },
+  "author": "Tay Moore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taycmoore2009/FreemarkerTemplateGen/issues"
+  },
+  "homepage": "https://github.com/taycmoore2009/FreemarkerTemplateGen#readme"
+}
