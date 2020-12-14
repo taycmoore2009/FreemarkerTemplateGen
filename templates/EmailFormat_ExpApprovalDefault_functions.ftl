@@ -132,6 +132,30 @@
 										<@spanData />
 									</div>
 								</td>
+								<#if !IsWatcherNotification>
+									<#if InstructionsViewReportText_URL?? && (InstructionsViewReportText_URL?length>0)>
+										<#local effectiveText = InstructionsViewReportText_URL>
+									<#else>
+										<#local effectiveText = getMessageProperty("expense.email.text.instructionsViewReportText_url")>
+									</#if>
+									<#if Instructions_URL?? && (Instructions_URL?length>0)>
+										<#local effectiveUrl = Instructions_URL>
+									<#else>
+										<#local effectiveUrl = "https://app.chromeriver.com">
+									</#if>
+									<tr>
+										<td valign="top" colspan="2">
+											<div style="font-family:tahoma,arial,sans-serif; max-width:596px; margin-left:5px; margin-right:5px;">
+												<br/>
+												<@spanData value=effectiveText />
+												<a href="${effectiveUrl}" style="text-decoration:underline; font-family:tahoma,arial,sans-serif;">
+													<@spanData value="${getMessageProperty('expense.email.text.click_here')}" />
+												</a>
+												<@spanData value="." />
+											</div>
+										</td>
+									</tr>
+								</#if>
 							<#else>
 								<td valign="top">
 									<div style="font-family:tahoma,arial,sans-serif; max-width:596px; margin-left:5px; margin-right:5px;">
@@ -140,30 +164,6 @@
 								</td>
 							</#if>
 						</#list>
-					</#if>
-					<#if !IsWatcherNotification>
-						<#if InstructionsViewReportText_URL?? && (InstructionsViewReportText_URL?length>0)>
-							<#local effectiveText = InstructionsViewReportText_URL>
-						<#else>
-							<#local effectiveText = getMessageProperty("expense.email.text.instructionsViewReportText_url")>
-						</#if>
-						<#if Instructions_URL?? && (Instructions_URL?length>0)>
-							<#local effectiveUrl = Instructions_URL>
-						<#else>
-							<#local effectiveUrl = "https://app.chromeriver.com">
-						</#if>
-						<tr>
-							<td valign="top" colspan="2">
-								<div style="font-family:tahoma,arial,sans-serif; max-width:596px; margin-left:5px; margin-right:5px;">
-									<br/>
-									<@spanData value=effectiveText />
-									<a href="${effectiveUrl}" style="text-decoration:underline; font-family:tahoma,arial,sans-serif;">
-										<@spanData value="${getMessageProperty('expense.email.text.click_here')}" />
-									</a>
-									<@spanData value="." />
-								</div>
-							</td>
-						</tr>
 					</#if>
 					<#if topinfo>
 						<@writeBottompage />
@@ -977,13 +977,13 @@
     									<#list itemNotes as itemNote>
     										<#if itemNote?has_content && (itemNote?size>1)>
     											<tr>
-    												<td style="${(ind=0)?string('border-top: 1pt solid #B4C1C6;','')}" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
+    												<td style="${ind=0?string('border-top: 1pt solid #B4C1C6;','')}" valign="top" colspan="1" width="${precentToPixelConverter(20)}">
     													<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:119px;" value="${itemNote[0]}" />
     												</td>
-    												<td style="${(ind=0)?string('border-top: 1pt solid #B4C1C6;','')}" valign="top" colspan="1" width="${precentToPixelConverter(25)}">
+    												<td style="${ind=0?string('border-top: 1pt solid #B4C1C6;','')}" valign="top" colspan="1" width="${precentToPixelConverter(25)}">
     													<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:179px;" value="${itemNote[1]}" />
     												</td>
-    												<td style="${(ind=0)?string('border-top: 1pt solid #B4C1C6;','')}" valign="top" colspan="1" width="${precentToPixelConverter(55)}">
+    												<td style="${ind=0?string('border-top: 1pt solid #B4C1C6;','')}" valign="top" colspan="1" width="${precentToPixelConverter(55)}">
     													<@divData style="margin-left:5px; margin-right:5px; font-family:tahoma,arial,sans-serif; max-width:298px;" value="${itemNote[2]}" />
     												</td>
     											</tr>
