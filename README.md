@@ -7,6 +7,7 @@ To start run `npm i`
 
 ## Accepted arguments in npm start
 npm start `ftl template location` `model location` `language select` `output location`
+
 example: `npm start templates/customTemplate.ftl models/customModel.json en outputs/customResponse.html`
 
 ### Issues
